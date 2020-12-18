@@ -1,0 +1,122 @@
+name: tess
+description: A new Flutter project.
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  contacts_service: ^0.4.6
+  flutter:
+    sdk: flutter
+  firebase_core: ^0.5.2+1
+  firebase_auth: ^0.18.3+1
+  http: ^0.12.2
+  json_annotation:
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  intl: ^0.16.1
+  flutter_svg: ^0.19.1
+  animations: ^1.1.2
+ 
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  json_model:
+  build_runner: ^1.0.0
+  json_serializable: ^2.0.0
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+   - assets/images/logo.png
+   - assets/images/logo1.png
+   - assets/images/head1.png
+   - assets/images/spice.svg
+   - assets/images/patient.svg
+   - assets/images/herb.svg
+   - assets/images/cigarettes.svg
+   - assets/images/siup.svg
+   - assets/images/signup_top.png
+   - assets/images/headHome.png
+   - assets/images/headsetting.png
+   - assets/images/profile.png
+   - assets/images/BMI1C.svg
+   - assets/images/sadheart.svg
+   - assets/images/happyheart.svg
+   - assets/images/fruit_granola.jpg
+   - assets/images/pesto_pasta.jpg
+   - assets/images/keto_snack.jpg
+   - assets/images/pesto_pasta2.jpg
+   - assets/images/protein.svg
+   - assets/images/rye.svg
+   - assets/images/salad.svg
+   - assets/images/strawberries.svg
+   - assets/images/trans-fat.svg
+   - assets/images/chicken.png
+   - assets/images/meat.png
+   - assets/images/milk.png
+   - assets/images/pan.png
+   - assets/images/peanut.png
+   - assets/images/sugar.png
+   - assets/images/taro.png
+   - assets/images/rice.png
+   - assets/images/vegetable.png
+   - assets/images/kisspng.png
+   - assets/images/vitamin.png
+
+  #  - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.io/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.io/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: Courgette
+      fonts:
+        - asset: fonts/Courgette-Regular.ttf
+        
+    - family: ConcertOne
+      fonts:
+        - asset: fonts/ConcertOne-Regular.ttf
+        
+    - family: NerkoOne
+      fonts:
+        - asset: fonts/NerkoOne-Regular.ttf
+
+    - family: Kanit
+      fonts:
+        - asset: fonts/Kanit-Regular.ttf
+    
+
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+ 
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.io/custom-fonts/#from-packages

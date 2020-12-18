@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "394018279046",
+    "firebase_url": "https://tessthaiherbs.firebaseio.com",
+    "project_id": "tessthaiherbs",
+    "storage_bucket": "tessthaiherbs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394018279046:android:ea2efdb9f8d5cb79258b07",
+        "android_client_info": {
+          "package_name": "com.example.tess"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394018279046-7mdlih3rkfl3inccn5sqkgh4pphah0mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu93aoTZusqnTRqpRJjj5Q4K9MWhehbb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394018279046-7mdlih3rkfl3inccn5sqkgh4pphah0mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tess/others/AutoGenJSON/UserListDemo.dart';
+import 'package:tess/widget/show_list_product.dart';
+
 
 
 class Manu extends StatefulWidget {
@@ -74,7 +75,7 @@ class _ManuState extends State<Manu> {
                             onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => UserListDemo());
+                                      builder: (BuildContext context) => ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(
@@ -104,13 +105,13 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white,
-                            onPressed: () {
+                            color: Colors.white, onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => UserListDemo());
+                                      builder: (BuildContext context) => ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
+                           
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40)),
                             elevation: 16,
@@ -138,14 +139,13 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white,
-                            onPressed: () {
+                            color: Colors.white, onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          UserListDemo());
+                                      builder: (BuildContext context) => ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
+                            
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40)),
                             elevation: 16,
@@ -173,11 +173,10 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white,
-                            onPressed: () {
+                            color: Colors.white, onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => UserListDemo());
+                                      builder: (BuildContext context) => ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(

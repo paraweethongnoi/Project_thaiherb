@@ -1,19 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/widget/show_detail_product.dart';
-//import 'package:tess/models/Product_model.dart';
 
-class ShowListProduct extends StatefulWidget {
+class Showliststylestanding extends StatefulWidget {
+  final String showstyle;
 
+  Showliststylestanding(this.showstyle);
 
   @override
-  _ShowListProductState createState() => _ShowListProductState();
+  _ShowliststylestandingState createState() => _ShowliststylestandingState();
 }
 
-class _ShowListProductState extends State<ShowListProduct> {
+class _ShowliststylestandingState extends State<Showliststylestanding> {
   DocumentSnapshot productModels;
   List products = [];
-  
 
   @override
   void initState() {
@@ -23,18 +23,34 @@ class _ShowListProductState extends State<ShowListProduct> {
 
   Future<void> readAllData() async {
     // ignore: deprecated_member_use
+    var collectionReference;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final collectionReference = await firestore
-        .collection("Product")
-        .get()
-        .then((QuerySnapshot querySnapshot) => {
-              querySnapshot.docs.forEach((doc) {
-                setState(() {
-                  products.add(doc.data());
-                });
-                print(products.toList());
-              })
-            });
+    if (widget.showstyle == null) {
+      collectionReference = await firestore
+          .collection("Product")
+          .get()
+          .then((QuerySnapshot querySnapshot) => {
+                querySnapshot.docs.forEach((doc) {
+                  setState(() {
+                    products.add(doc.data());
+                  });
+                  print(products.toList());
+                })
+              });
+    } else {
+      collectionReference = await firestore
+          .collection("Product")
+          .where("style", isEqualTo: widget.showstyle)
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          setState(() {
+            products.add(doc.data());
+          });
+          print(products.toList());
+        });
+      });
+    }
   }
 
   Widget showImage(int index) {
@@ -153,7 +169,16 @@ class _ShowListProductState extends State<ShowListProduct> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.limeAccent[700],
+        backgroundColor: Colors.lightGreen[400],
+        title: Text(
+          'ไม้ต้น',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+            fontFamily: 'Kanit',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Stack(
         children: [
@@ -179,7 +204,7 @@ class _ShowListProductState extends State<ShowListProduct> {
 class HeaderCurvedContainer extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = Colors.limeAccent[700];
+    Paint paint = Paint()..color = Colors.lightGreen[400];
     Path path = Path()
       ..relativeLineTo(0, 150)
       ..quadraticBezierTo(size.width / 2, 225, size.width, 150)

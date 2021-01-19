@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tess/widget/home_illness.dart';
+import 'package:tess/widget/show_by_style.dart';
 import 'package:tess/widget/show_list_product.dart';
-
-
 
 class Manu extends StatefulWidget {
   @override
@@ -75,7 +75,8 @@ class _ManuState extends State<Manu> {
                             onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => ShowListProduct());
+                                      builder: (BuildContext context) =>
+                                          ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(
@@ -105,13 +106,14 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white, onPressed: () {
+                            color: Colors.white,
+                            onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => ShowListProduct());
+                                      builder: (BuildContext context) =>
+                                          Homeillness());
                               Navigator.of(context).push(materialPageRoute);
                             },
-                           
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40)),
                             elevation: 16,
@@ -139,13 +141,14 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white, onPressed: () {
+                            color: Colors.white,
+                            onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => ShowListProduct());
+                                      builder: (BuildContext context) =>
+                                          Manustyle());
                               Navigator.of(context).push(materialPageRoute);
                             },
-                            
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(40)),
                             elevation: 16,
@@ -173,10 +176,12 @@ class _ManuState extends State<Manu> {
                             ),
                           ),
                           RaisedButton(
-                            color: Colors.white, onPressed: () {
+                            color: Colors.white,
+                            onPressed: () {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
-                                      builder: (BuildContext context) => ShowListProduct());
+                                      builder: (BuildContext context) =>
+                                          ShowListProduct());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(
@@ -200,6 +205,111 @@ class _ManuState extends State<Manu> {
                                 ),
                                 Text(
                                   'Help quit smoking',
+                                  style: cardTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                          RaisedButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ShowListProduct());
+                              Navigator.of(context).push(materialPageRoute);
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            elevation: 16,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/images/map.svg',
+                                  height: 120,
+                                ),
+                                Text(
+                                  'แหล่งซื้อขาย',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Trading source',
+                                  style: cardTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                          RaisedButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ShowListProduct());
+                              Navigator.of(context).push(materialPageRoute);
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            elevation: 16,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/images/add-file.svg',
+                                  height: 120,
+                                ),
+                                Text(
+                                  'เพิ่ม/แก้ไข',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Add / edit',
+                                  style: cardTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                          RaisedButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ShowListProduct());
+                              Navigator.of(context).push(materialPageRoute);
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            elevation: 16,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/images/chat.svg',
+                                  height: 120,
+                                ),
+                                Text(
+                                  'พูดคุย แลกเปลี่ยนความรู้',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'talk',
                                   style: cardTextStyle,
                                 )
                               ],

@@ -1,19 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/widget/show_detail_product.dart';
-//import 'package:tess/models/Product_model.dart';
 
-class ShowListProduct extends StatefulWidget {
+class Showdetailillness1 extends StatefulWidget {
+  final String illnees;
 
+  Showdetailillness1(this.illnees);
 
   @override
-  _ShowListProductState createState() => _ShowListProductState();
+  _Showdetailillness1State createState() => _Showdetailillness1State();
 }
 
-class _ShowListProductState extends State<ShowListProduct> {
+class _Showdetailillness1State extends State<Showdetailillness1> {
   DocumentSnapshot productModels;
   List products = [];
-  
 
   @override
   void initState() {
@@ -23,18 +23,34 @@ class _ShowListProductState extends State<ShowListProduct> {
 
   Future<void> readAllData() async {
     // ignore: deprecated_member_use
+    var collectionReference;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    final collectionReference = await firestore
-        .collection("Product")
-        .get()
-        .then((QuerySnapshot querySnapshot) => {
-              querySnapshot.docs.forEach((doc) {
-                setState(() {
-                  products.add(doc.data());
-                });
-                print(products.toList());
-              })
-            });
+    if (widget.illnees == null) {
+      collectionReference = await firestore
+          .collection("Product")
+          .get()
+          .then((QuerySnapshot querySnapshot) => {
+                querySnapshot.docs.forEach((doc) {
+                  setState(() {
+                    products.add(doc.data());
+                  });
+                  print(products.toList());
+                })
+              });
+    } else {
+      collectionReference = await firestore
+          .collection("Product")
+          .where("status", isEqualTo: widget.illnees)
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          setState(() {
+            products.add(doc.data());
+          });
+          print(products.toList());
+        });
+      });
+    }
   }
 
   Widget showImage(int index) {
@@ -153,7 +169,7 @@ class _ShowListProductState extends State<ShowListProduct> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.limeAccent[700],
+        backgroundColor: Colors.purpleAccent[100],
       ),
       body: Stack(
         children: [
@@ -179,7 +195,7 @@ class _ShowListProductState extends State<ShowListProduct> {
 class HeaderCurvedContainer extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = Colors.limeAccent[700];
+    Paint paint = Paint()..color = Colors.purpleAccent[100];
     Path path = Path()
       ..relativeLineTo(0, 150)
       ..quadraticBezierTo(size.width / 2, 225, size.width, 150)

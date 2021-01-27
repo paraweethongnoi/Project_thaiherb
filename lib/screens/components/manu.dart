@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tess/widget/home_illness.dart';
 import 'package:tess/widget/show_by_style.dart';
 import 'package:tess/widget/show_list_product.dart';
+import 'package:tess/widget/show_list_smoking.dart';
+import 'package:tess/widget/show_map.dart';
 
 class Manu extends StatefulWidget {
   @override
@@ -181,7 +183,7 @@ class _ManuState extends State<Manu> {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ShowListProduct());
+                                          Showlistsmoking("เลิกบุหรี่"));
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(
@@ -216,7 +218,7 @@ class _ManuState extends State<Manu> {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ShowListProduct());
+                                          Showmap());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(

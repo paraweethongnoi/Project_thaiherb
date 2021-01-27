@@ -29,16 +29,35 @@ class _HomeillnessState extends State<Homeillness> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         iconSize: 25,
+        backgroundColor: Colors.deepPurple[300],
+        selectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            title: Text('โรคหรืออาการภายใน'),
-            backgroundColor: Colors.greenAccent[900],
+            
+            title: Text(
+              'โรคหรืออาการภายใน',
+              style: TextStyle(
+                fontSize: 17.0,
+                color: Colors.white,
+                fontFamily: 'Kanit',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            title: Text('โรคหรืออาการภายนอก'),
-            backgroundColor: Colors.lightBlue[400],
+            title: Text(
+              'โรคหรืออาการภายนอก',
+              style: TextStyle(
+                fontSize: 17.0,
+                color: Colors.white,
+                fontFamily: 'Kanit',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            
           )
         ],
         onTap: (index) {

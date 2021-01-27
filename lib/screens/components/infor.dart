@@ -149,7 +149,10 @@ class _InforScreenState extends State<InforScreen> {
                               _bmiModel = BMIModel(
                                   bmi: _bmi,
                                   isNormal: true,
-                                  comments: "น้ำหนักคุณ อยู่ในเกณฑ์ปกติ");
+                                  comments: "น้ำหนักคุณ อยู่ในเกณฑ์ปกติ",
+                                  
+                                  );
+                                  
                             } else if (_bmi < 18.5) {
                               _bmiModel = BMIModel(
                                   bmi: _bmi,

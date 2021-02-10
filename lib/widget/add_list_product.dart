@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -6,6 +9,32 @@ class Adddata extends StatefulWidget {
 }
 
 class _AdddataState extends State<Adddata> {
+  File file;
+
+  Widget uploadButton() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: RaisedButton.icon(
+            color: Colors.limeAccent,
+            onPressed: () {},
+            icon: Icon(Icons.cloud_upload),
+            label: Text(
+              'เพิ่ม ข้อมูลสมุนไพร',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'Kanit',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget nameForm() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
@@ -49,8 +78,24 @@ class _AdddataState extends State<Adddata> {
         size: 40.0,
         color: Colors.green,
       ),
-      onPressed: () {},
+      onPressed: () {
+        chooseImage(ImageSource.camera);
+      },
     );
+  }
+
+  Future<void> chooseImage(ImageSource imageSource) async {
+    try {
+      var object = await ImagePicker().getImage(
+        source: imageSource,
+        maxWidth: 800.0,
+        maxHeight: 800.0,
+      );
+
+      setState(() {
+        file = File(object.path);
+      });
+    } catch (e) {}
   }
 
   Widget galleryButton() {
@@ -60,7 +105,9 @@ class _AdddataState extends State<Adddata> {
         size: 40.0,
         color: Colors.yellow[700],
       ),
-      onPressed: () {},
+      onPressed: () {
+        chooseImage(ImageSource.gallery);
+      },
     );
   }
 
@@ -105,6 +152,7 @@ class _AdddataState extends State<Adddata> {
       body: Stack(
         children: <Widget>[
           showContent(),
+          uploadButton()
           // CustomPaint(
           //   child: Container(
           //     width: MediaQuery.of(context).size.width,

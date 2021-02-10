@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tess/widget/add_list_product.dart';
 import 'package:tess/widget/home_illness.dart';
 import 'package:tess/widget/show_by_style.dart';
 import 'package:tess/widget/show_list_product.dart';
@@ -253,7 +254,7 @@ class _ManuState extends State<Manu> {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ShowListProduct());
+                                          Adddata());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(

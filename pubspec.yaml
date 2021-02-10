@@ -84,6 +84,7 @@ flutter:
    - assets/images/map.svg
    - assets/images/add-file.svg
    - assets/images/chat.svg
+   - assets/images/imageadd.png
 
   #  - images/a_dot_ham.jpeg
 

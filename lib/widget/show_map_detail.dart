@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 
 // ignore: must_be_immutable
 class Showmapdetail extends StatefulWidget {
@@ -27,18 +27,18 @@ class _ShowmapdetailState extends State<Showmapdetail> {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final collectionReference = await firestore
         .collection("showmap")
+        .doc(widget.showlistmap["Namemap"])
         .get()
-        .then((QuerySnapshot querySnapshot) => {
-              querySnapshot.docs.forEach((doc) {
-                print('${doc.data}}');
-                GeoPoint pos = doc["shmap"];
-                setState(() {
-                  nameShop = doc["Namemap"];
-                  latLng = new LatLng(pos.latitude, pos.longitude);
-                });
-                print(["shmap"]);
-              })
-            });
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        var data = documentSnapshot.data();
+        GeoPoint pos = data['shmap'];
+        setState(() {
+          nameShop = data['Namemap'];
+          latLng = LatLng(pos.latitude, pos.longitude);
+        });
+      }
+    });
   }
 
   @override
@@ -191,28 +191,67 @@ class _ShowmapdetailState extends State<Showmapdetail> {
                           fontFamily: 'Kanit',
                         ),
                       ),
-                      RaisedButton(
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Text(
-                              'Tel : ',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.grey[700],
-                                fontFamily: 'Kanit',
-                              ),
-                            ),
-                            Text(
-                              widget.showlistmap["Tel"],
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.grey[700],
-                                fontFamily: 'Kanit',
-                              ),
-                            ),
-                          ],
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.local_phone,
+                                  color: Colors.green[600],
+                                  size: 50,
+                                ),
+                                onPressed: () async {
+                                  var url = 'tel:${widget.showlistmap["Tel"]}';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Couid not launch $url';
+                                  }
+                                }),
+                          ),
+                          Text(
+                            widget.showlistmap["Tel"],
+                            style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red[900],
+                          fontFamily: 'Kanit',
                         ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.web_asset,
+                                color: Colors.yellow[900],
+                                size: 50,
+                              ),
+                              onPressed: () async {
+                                var url = '${widget.showlistmap["Website"]}';
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Couid not launch $url';
+                                }
+                              },
+                            ),
+                          ),
+                          Text(
+                            'Click website',
+                            style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red[900],
+                          fontFamily: 'Kanit',
+                        ),
+                          ),
+                        ],
                       ),
                       Container(
                         child: Column(

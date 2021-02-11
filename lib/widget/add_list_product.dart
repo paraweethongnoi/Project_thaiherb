@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'dart:math';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,6 +12,7 @@ class Adddata extends StatefulWidget {
 
 class _AdddataState extends State<Adddata> {
   File file;
+  String name, detail, detail2, urlPcture;
 
   Widget uploadButton() {
     return Column(
@@ -19,7 +22,23 @@ class _AdddataState extends State<Adddata> {
           width: MediaQuery.of(context).size.width,
           child: RaisedButton.icon(
             color: Colors.limeAccent,
-            onPressed: () {},
+            onPressed: () {
+              print('ํyou click');
+
+              if (file == null) {
+                showAlert('คุณยังไม่ได้เลือกรูป',
+                    'กรุณาเลือกรูปภาพ หรือ Upload รูปภาพ');
+              } else if (name == null ||
+                  name.isEmpty ||
+                  detail == null ||
+                  detail.isEmpty ||
+                  detail2 == null ||
+                  detail2.isEmpty) {
+                showAlert('คุณกรอกข้อมูลไม่ครบ', 'กรุณากรอกข้อมูลให้ครบถ้วน');
+              } else {
+                uploandPicture();
+              }
+            },
             icon: Icon(Icons.cloud_upload),
             label: Text(
               'เพิ่ม ข้อมูลสมุนไพร',
@@ -35,10 +54,46 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
+  Future<void> uploandPicture() async {
+    Random random = Random();
+    int i = random.nextInt(100000);
+
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child('Product/product$i.jpg');
+    UploadTask uploadTask = ref.putFile(file);
+ 
+    uploadTask.then((res) {
+      res.ref.getDownloadURL();
+    });
+    print('urlPcture =$urlPcture');
+  }
+
+  Future<void> showAlert(String title, String message) async {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('ตกลง'),
+              )
+            ],
+          );
+        });
+  }
+
   Widget nameForm() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
       child: TextField(
+        onChanged: (String string) {
+          name = string.trim();
+        },
         decoration: InputDecoration(
           labelText: 'Name',
           icon: Icon(Icons.park),
@@ -47,10 +102,13 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  Widget detail() {
+  Widget detailForm() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
       child: TextField(
+        onChanged: (String string) {
+          detail = string.trim();
+        },
         decoration: InputDecoration(
           labelText: 'ชื่อวิทยาศาสตร์ : ',
           icon: Icon(Icons.drive_file_rename_outline),
@@ -59,10 +117,13 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  Widget detail2() {
+  Widget detail2Form() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
       child: TextField(
+        onChanged: (String string) {
+          detail2 = string.trim();
+        },
         decoration: InputDecoration(
           labelText: 'ชื่อท้องถิ่น : ',
           icon: Icon(Icons.local_airport),
@@ -123,7 +184,9 @@ class _AdddataState extends State<Adddata> {
       //color: Colors.grey,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.3,
-      child: Image.asset('assets/images/imageadd.png'),
+      child: file == null
+          ? Image.asset('assets/images/imageadd.png')
+          : Image.file(file),
     );
   }
 
@@ -135,8 +198,8 @@ class _AdddataState extends State<Adddata> {
           showImage(),
           showButton(),
           nameForm(),
-          detail(),
-          detail2(),
+          detailForm(),
+          detail2Form(),
         ],
       ),
     );

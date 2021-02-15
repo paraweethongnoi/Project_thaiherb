@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tess/screens/components/manu.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -12,7 +15,24 @@ class Adddata extends StatefulWidget {
 
 class _AdddataState extends State<Adddata> {
   File file;
-  String name, detail, detail2, urlPcture;
+  // File _image;
+  // File _imgReceipt;
+  String name,
+      detail,
+      detail2,
+      englishname,
+      familyname,
+      important,
+      partused,
+      synonyms,
+      beware,
+      eat,
+      look,
+      status,
+      status2,
+      style,
+      urlPcture,
+      urlPcture2;
 
   Widget uploadButton() {
     return Column(
@@ -23,7 +43,7 @@ class _AdddataState extends State<Adddata> {
           child: RaisedButton.icon(
             color: Colors.limeAccent,
             onPressed: () {
-              print('ํyou click');
+              print('you click');
 
               if (file == null) {
                 showAlert('คุณยังไม่ได้เลือกรูป',
@@ -36,7 +56,8 @@ class _AdddataState extends State<Adddata> {
                   detail2.isEmpty) {
                 showAlert('คุณกรอกข้อมูลไม่ครบ', 'กรุณากรอกข้อมูลให้ครบถ้วน');
               } else {
-                uploandPicture();
+                //uploandPicture();
+                uploadPictureToStore();
               }
             },
             icon: Icon(Icons.cloud_upload),
@@ -54,18 +75,46 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  Future<void> uploandPicture() async {
+  Future<void> uploadPictureToStore() async {
     Random random = Random();
     int i = random.nextInt(100000);
 
-    FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child('Product/product$i.jpg');
-    UploadTask uploadTask = ref.putFile(file);
- 
-    uploadTask.then((res) {
-      res.ref.getDownloadURL();
-    });
+    FirebaseStorage firebaseStorage = FirebaseStorage.instance;
+
+    await firebaseStorage.ref().child('Product/product$i.jpg').putFile(file);
+    urlPcture = await firebaseStorage
+        .ref()
+        .child('Product/product$i.jpg')
+        .getDownloadURL();
     print('urlPcture =$urlPcture');
+    await setupDisplayName();
+  }
+
+  Future<void> setupDisplayName() async {
+    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    var user = firebaseAuth.currentUser;
+    DocumentReference ref = firestore.collection('Product').doc();
+
+    Map<String, dynamic> map = Map();
+    map['Name'] = name;
+    map['Detail'] = detail;
+    map['Detail2'] = detail2;
+    map['PathImage'] = urlPcture;
+
+    if (user != null) {
+      await firestore
+          .collection("Product")
+          .doc(user.uid)
+          .set(map)
+          .then((value) {
+        MaterialPageRoute materialPageRoute =
+            MaterialPageRoute(builder: (BuildContext context) => Manu());
+        Navigator.of(context).pushAndRemoveUntil(
+            materialPageRoute, (Route<dynamic> route) => false);
+      });
+    }
+    print("OK");
   }
 
   Future<void> showAlert(String title, String message) async {
@@ -214,15 +263,15 @@ class _AdddataState extends State<Adddata> {
       ),
       body: Stack(
         children: <Widget>[
+          CustomPaint(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+            ),
+            painter: HeaderCurvedContainer(),
+          ),
           showContent(),
           uploadButton()
-          // CustomPaint(
-          //   child: Container(
-          //     width: MediaQuery.of(context).size.width,
-          //     height: MediaQuery.of(context).size.height,
-          //   ),
-          //   painter: HeaderCurvedContainer(),
-          // ),
         ],
       ),
     );

@@ -94,8 +94,6 @@ class _AdddataState extends State<Adddata> {
     await setupDisplayName();
   }
 
-  
-
   Future<void> setupDisplayName() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -113,10 +111,10 @@ class _AdddataState extends State<Adddata> {
     map['Partused'] = partused;
     map['look'] = look1;
     map['eat'] = eat1;
-    map['status'] = status1;
-    map['status2'] = status22;
+    // map['status'] = status1;
+    // map['status2'] = status22;
     map['beware'] = beware1;
-    map['smoking'] = smoking1;
+    // map['smoking'] = smoking1;
     map['style'] = style1;
     map['Synonyms'] = synonyms1;
 
@@ -324,77 +322,77 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  Widget statusForm() {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      child: TextField(
-        onChanged: (String string) {
-          status1 = string.trim();
-        },
-        decoration: InputDecoration(
-          labelText: 'ข้อควรระวัง : ',
-          icon: Icon(
-            Icons.add_alert,
-            color: Colors.red[700],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget statusForm() {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width * 0.9,
+  //     child: TextField(
+  //       onChanged: (String string) {
+  //         status1 = string.trim();
+  //       },
+  //       decoration: InputDecoration(
+  //         labelText: 'ข้อควรระวัง : ',
+  //         icon: Icon(
+  //           Icons.add_alert,
+  //           color: Colors.red[700],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget status2Form() {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      child: TextField(
-        onChanged: (String string) {
-          status22 = string.trim();
-        },
-        decoration: InputDecoration(
-          labelText: 'ข้อควรระวัง : ',
-          icon: Icon(
-            Icons.add_alert,
-            color: Colors.red[700],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget status2Form() {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width * 0.9,
+  //     child: TextField(
+  //       onChanged: (String string) {
+  //         status22 = string.trim();
+  //       },
+  //       decoration: InputDecoration(
+  //         labelText: 'ข้อควรระวัง : ',
+  //         icon: Icon(
+  //           Icons.add_alert,
+  //           color: Colors.red[700],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget styleForm() {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      child: TextField(
-        onChanged: (String string) {
-          style1 = string.trim();
-        },
-        decoration: InputDecoration(
-          labelText: 'ข้อควรระวัง : ',
-          icon: Icon(
-            Icons.add_alert,
-            color: Colors.red[700],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget styleForm() {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width * 0.9,
+  //     child: TextField(
+  //       onChanged: (String string) {
+  //         style1 = string.trim();
+  //       },
+  //       decoration: InputDecoration(
+  //         labelText: 'ข้อควรระวัง : ',
+  //         icon: Icon(
+  //           Icons.add_alert,
+  //           color: Colors.red[700],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget smokingForm() {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      child: TextField(
-        onChanged: (String string) {
-          smoking1 = string.trim();
-        },
-        decoration: InputDecoration(
-          labelText: 'ข้อควรระวัง : ',
-          icon: Icon(
-            Icons.add_alert,
-            color: Colors.red[700],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget smokingForm() {
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width * 0.9,
+  //     child: TextField(
+  //       onChanged: (String string) {
+  //         smoking1 = string.trim();
+  //       },
+  //       decoration: InputDecoration(
+  //         labelText: 'ข้อควรระวัง : ',
+  //         icon: Icon(
+  //           Icons.add_alert,
+  //           color: Colors.red[700],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget synonymsForm() {
     return Container(
@@ -404,10 +402,10 @@ class _AdddataState extends State<Adddata> {
           synonyms1 = string.trim();
         },
         decoration: InputDecoration(
-          labelText: 'ข้อควรระวัง : ',
+          labelText: 'ชื่อพ้อง : ',
           icon: Icon(
-            Icons.add_alert,
-            color: Colors.red[700],
+            Icons.announcement,
+            color: Colors.blueGrey,
           ),
         ),
       ),
@@ -481,21 +479,22 @@ class _AdddataState extends State<Adddata> {
           children: <Widget>[
             showImage(),
             showButton(),
+             uploadButton(),
             nameForm(),
             detailForm(),
             detail2Form(),
             englishnameForm(),
             familynameForm(),
+            synonymsForm(),
             importantForm(),
             partusedForm(),
             lookForm(),
             eatForm(),
             bewareForm(),
-            statusForm(),
-            status2Form(),
-            styleForm(),
-            smokingForm(),
-            synonymsForm()
+            // statusForm(),
+            // status2Form(),
+            // styleForm(),
+            // smokingForm(),
           ],
         ),
       ),
@@ -505,11 +504,21 @@ class _AdddataState extends State<Adddata> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.limeAccent,
+        backgroundColor: Colors.lightGreenAccent,
+        title: Text(
+          'เพิ่มข้อมูลสมุนไพร',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.black,
+            fontFamily: 'Kanit',
+          ),
+        ),
       ),
       body: Stack(
+        
         children: <Widget>[
           CustomPaint(
             child: Container(
@@ -519,7 +528,7 @@ class _AdddataState extends State<Adddata> {
             painter: HeaderCurvedContainer(),
           ),
           showContent(),
-          uploadButton()
+         
         ],
       ),
     );
@@ -529,7 +538,7 @@ class _AdddataState extends State<Adddata> {
 class HeaderCurvedContainer extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = Colors.limeAccent;
+    Paint paint = Paint()..color = Colors.lightGreenAccent;
     Path path = Path()
       ..relativeLineTo(0, 150)
       ..quadraticBezierTo(size.width / 2, 225, size.width, 150)

@@ -269,7 +269,7 @@ class _ManuState extends State<Manu> {
                                   height: 120,
                                 ),
                                 Text(
-                                  'เพิ่ม/แก้ไข',
+                                  'เพิ่ม รายการสมุนไพร',
                                   style: TextStyle(
                                     fontSize: 17.0,
                                     color: Colors.blue[800],
@@ -278,7 +278,7 @@ class _ManuState extends State<Manu> {
                                   ),
                                 ),
                                 Text(
-                                  'Add / edit',
+                                  'Add a list of herbs',
                                   style: cardTextStyle,
                                 )
                               ],

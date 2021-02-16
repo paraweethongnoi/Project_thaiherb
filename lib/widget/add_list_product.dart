@@ -24,24 +24,24 @@ class _AdddataState extends State<Adddata> {
       familyname,
       important,
       partused,
-      synonyms,
-      beware,
-      eat,
+      synonyms1,
+      beware1,
+      eat1,
       look1,
-      status,
-      status2,
-      style,
+      status1,
+      status22,
+      style1,
+      smoking1,
       urlPcture,
       urlPcture2;
 
   Widget uploadButton() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
           child: RaisedButton.icon(
-            color: Colors.limeAccent,
+            color: Colors.green[800],
             onPressed: () {
               print('you click');
 
@@ -60,10 +60,14 @@ class _AdddataState extends State<Adddata> {
                 uploadPictureToStore();
               }
             },
-            icon: Icon(Icons.cloud_upload),
+            icon: Icon(
+              Icons.cloud_upload,
+              color: Colors.white,
+            ),
             label: Text(
               'เพิ่ม ข้อมูลสมุนไพร',
               style: TextStyle(
+                color: Colors.white,
                 fontSize: 20.0,
                 fontFamily: 'Kanit',
                 fontWeight: FontWeight.w500,
@@ -90,6 +94,8 @@ class _AdddataState extends State<Adddata> {
     await setupDisplayName();
   }
 
+  
+
   Future<void> setupDisplayName() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -106,14 +112,16 @@ class _AdddataState extends State<Adddata> {
     map['Important'] = important;
     map['Partused'] = partused;
     map['look'] = look1;
-
+    map['eat'] = eat1;
+    map['status'] = status1;
+    map['status2'] = status22;
+    map['beware'] = beware1;
+    map['smoking'] = smoking1;
+    map['style'] = style1;
+    map['Synonyms'] = synonyms1;
 
     if (user != null) {
-      await firestore
-          .collection("Product")
-          .doc()
-          .set(map)
-          .then((value) {
+      await firestore.collection("Product").doc().set(map).then((value) {
         MaterialPageRoute materialPageRoute =
             MaterialPageRoute(builder: (BuildContext context) => Manu());
         Navigator.of(context).pushAndRemoveUntil(
@@ -144,7 +152,7 @@ class _AdddataState extends State<Adddata> {
 
   Widget nameForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           name = string.trim();
@@ -159,14 +167,17 @@ class _AdddataState extends State<Adddata> {
 
   Widget detailForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           detail = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ชื่อวิทยาศาสตร์ : ',
-          icon: Icon(Icons.drive_file_rename_outline),
+          icon: Icon(
+            Icons.drive_file_rename_outline,
+            color: Colors.green,
+          ),
         ),
       ),
     );
@@ -174,14 +185,17 @@ class _AdddataState extends State<Adddata> {
 
   Widget detail2Form() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           detail2 = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ชื่อท้องถิ่น : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(
+            Icons.local_airport,
+            color: Colors.blue,
+          ),
         ),
       ),
     );
@@ -189,14 +203,17 @@ class _AdddataState extends State<Adddata> {
 
   Widget englishnameForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           englishname = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ชื่ออังกฤษ : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(
+            Icons.badge,
+            color: Colors.red,
+          ),
         ),
       ),
     );
@@ -204,14 +221,17 @@ class _AdddataState extends State<Adddata> {
 
   Widget familynameForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           familyname = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ชื่อวงศ์ : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(
+            Icons.group,
+            color: Colors.pink,
+          ),
         ),
       ),
     );
@@ -219,29 +239,32 @@ class _AdddataState extends State<Adddata> {
 
   Widget importantForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           important = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'สารสำคัญที่ออกฤทธิ์ : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(
+            Icons.new_releases,
+            color: Colors.yellow,
+          ),
         ),
       ),
     );
   }
 
-    Widget partusedForm() {
+  Widget partusedForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           partused = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ส่วนที่ใช้เป็นยาและสรรพคุณ : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(Icons.celebration, color: Colors.teal),
         ),
       ),
     );
@@ -249,21 +272,147 @@ class _AdddataState extends State<Adddata> {
 
   Widget lookForm() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         onChanged: (String string) {
           look1 = string.trim();
         },
         decoration: InputDecoration(
           labelText: 'ลักษณะทางพฤกษศาสตร์ : ',
-          icon: Icon(Icons.local_airport),
+          icon: Icon(
+            Icons.local_florist,
+            color: Colors.blueAccent,
+          ),
         ),
       ),
     );
   }
 
+  Widget eatForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          eat1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'รูปแบบและขนาดวิธีใช้ยา : ',
+          icon: Icon(
+            Icons.restaurant,
+            color: Colors.purple,
+          ),
+        ),
+      ),
+    );
+  }
 
-  
+  Widget bewareForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          beware1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget statusForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          status1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget status2Form() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          status22 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget styleForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          style1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget smokingForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          smoking1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget synonymsForm() {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: TextField(
+        onChanged: (String string) {
+          synonyms1 = string.trim();
+        },
+        decoration: InputDecoration(
+          labelText: 'ข้อควรระวัง : ',
+          icon: Icon(
+            Icons.add_alert,
+            color: Colors.red[700],
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget cameraButton() {
     return IconButton(
@@ -325,21 +474,30 @@ class _AdddataState extends State<Adddata> {
 
   Widget showContent() {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          showImage(),
-          showButton(),
-          nameForm(),
-          detailForm(),
-          detail2Form(),
-          englishnameForm(),
-          familynameForm(),
-          importantForm(),
-          partusedForm(),
-          lookForm()
-          
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            showImage(),
+            showButton(),
+            nameForm(),
+            detailForm(),
+            detail2Form(),
+            englishnameForm(),
+            familynameForm(),
+            importantForm(),
+            partusedForm(),
+            lookForm(),
+            eatForm(),
+            bewareForm(),
+            statusForm(),
+            status2Form(),
+            styleForm(),
+            smokingForm(),
+            synonymsForm()
+          ],
+        ),
       ),
     );
   }

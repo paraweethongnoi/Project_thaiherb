@@ -116,15 +116,36 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                             ],
                           ),
                           //ชื่อวงศ์
+                          Row(
+                            children: [
+                              Text(
+                                "ชื่อวงศ์ : ",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.green[800],
+                                  fontFamily: 'Kanit',
+                                ),
+                              ),
+                              Text(
+                                widget.product["Familyname"],
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.green[800],
+                                  fontFamily: 'Kanit',
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          //ชื่อพ้อง
                           Text(
-                            widget.product["Familyname"],
+                            "ชื่อพ้อง : ",
                             style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.green[800],
+                              fontSize: 18.0,
+                              color: Colors.black,
                               fontFamily: 'Kanit',
                             ),
                           ),
-                          //ชื่อพ้อง
                           Text(
                             widget.product["Synonyms"],
                             style: TextStyle(
@@ -133,7 +154,16 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                               fontFamily: 'Kanit',
                             ),
                           ),
+
                           //ชื่ออังกฤษ
+                          Text(
+                            "ชื่ออังกฤษ : ",
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontFamily: 'Kanit',
+                            ),
+                          ),
                           Text(
                             widget.product["Englishname"],
                             style: TextStyle(
@@ -142,6 +172,7 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                               fontFamily: 'Kanit',
                             ),
                           ),
+
                           SizedBox(height: 10),
                           Text(
                             "ลักษณะทางพฤกษศาสตร์ : ",
@@ -216,7 +247,6 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                       onTap: openContainer,
                       child: Container(
                         decoration: BoxDecoration(
-                          
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,

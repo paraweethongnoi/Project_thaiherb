@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tess/widget/add_list_product.dart';
 import 'package:tess/widget/home_illness.dart';
 import 'package:tess/widget/show_by_style.dart';
+import 'package:tess/widget/show_covid.dart';
 import 'package:tess/widget/show_list_product.dart';
 import 'package:tess/widget/show_list_smoking.dart';
 import 'package:tess/widget/show_map.dart';
@@ -314,6 +315,41 @@ class _ManuState extends State<Manu> {
                                 ),
                                 Text(
                                   'talk',
+                                  style: cardTextStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                          RaisedButton(
+                            color: Colors.white,
+                            onPressed: () {
+                              MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Covid19());
+                              Navigator.of(context).push(materialPageRoute);
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            elevation: 16,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/images/covid-19.svg',
+                                  height: 120,
+                                ),
+                                Text(
+                                  'รายงานสถานการณ์ โควิด-19',
+                                  style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'covid-19',
                                   style: cardTextStyle,
                                 )
                               ],

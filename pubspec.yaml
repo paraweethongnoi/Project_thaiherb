@@ -90,6 +90,8 @@ flutter:
    - assets/images/add-file.svg
    - assets/images/chat.svg
    - assets/images/imageadd.png
+   - assets/images/admin.svg
+   - assets/images/covid-19.svg
 
   #  - images/a_dot_ham.jpeg
 

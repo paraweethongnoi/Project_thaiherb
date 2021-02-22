@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/bmi1.dart';
+import 'package:tess/screens/home.dart';
 
 import 'package:tess/screens/splashscreen.dart';
 //import 'package:tess/screens/components/home_screen.dart';
@@ -22,7 +23,7 @@ class MyAppTien extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => SplashScreen(),
-        '/home': (BuildContext context) => Bmi1(),
+        '/home': (BuildContext context) => Home(),
       },
     );
   }

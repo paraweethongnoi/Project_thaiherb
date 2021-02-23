@@ -4,8 +4,6 @@ import 'package:tess/widget/show_detail_product.dart';
 //import 'package:tess/models/Product_model.dart';
 
 class ShowListProduct extends StatefulWidget {
-
-
   @override
   _ShowListProductState createState() => _ShowListProductState();
 }
@@ -13,7 +11,8 @@ class ShowListProduct extends StatefulWidget {
 class _ShowListProductState extends State<ShowListProduct> {
   DocumentSnapshot productModels;
   List products = [];
-  
+  List productSearch = [];
+  final keyword = TextEditingController();
 
   @override
   void initState() {
@@ -148,14 +147,46 @@ class _ShowListProductState extends State<ShowListProduct> {
     );
   }
 
+  Widget showSearchView(){
+    return ListView.separated(
+                itemCount: productSearch.length,
+                separatorBuilder: (context, index)=> Divider(),
+                itemBuilder: (BuildContext buildcontext, int index) {
+                  return ListTile(
+                      title: Text(productSearch[index]["Name"]),
+                      onTap: (){
+                          MaterialPageRoute route = MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                          ShowdetailProduct(productSearch[index]));
+                          Navigator.push(context, route);
+                      },
+                  );
+                },
+              );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.limeAccent[700],
+        bottom: PreferredSize(
+          preferredSize: Size(double.infinity, 20),
+          child: TextFormField(
+            controller: keyword,
+            onChanged: (value){
+                setState(() {
+                  productSearch = products.where((element) => (element["Name"].contains(keyword.text))).toList();
+                });
+            },
+            decoration: InputDecoration(labelText: 'กดเพื่อค้นหา',
+              suffixIcon: Icon(Icons.search)
+            ),
+          ),
+        ),
       ),
-      body: Stack(
+      body: keyword.text != "" ? showSearchView() : Stack(
         children: [
           CustomPaint(
             child: Container(

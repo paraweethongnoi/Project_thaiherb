@@ -28,7 +28,7 @@ class _Bmi1State extends State<Bmi1> {
     )),
     Center(
         child: Scaffold(
-      body: SettingScreen(),
+     // body: SettingScreen(),
     ))
   ];
 

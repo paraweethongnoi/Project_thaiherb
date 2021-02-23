@@ -20,25 +20,26 @@ class _SettingScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    findDisplayName();
+    //findDisplayName();
   }
 
-  Future<void> findDisplayName() async {
-    FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-    final user = await _firebaseAuth.currentUser;
-    setState(() {
-      login = user.displayName;
-    });
-    print('login = $login');
-  }
+  // Future<void> findDisplayName() async {
+  //   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  //   final user = await _firebaseAuth.currentUser;
+  //   setState(() {
+  //     login = user.displayName;
+  //   });
+  //   print('login = $login');
+  // }
 
   Widget showLongin() {
     return Text(
-      'สวัสดี,  $login',
+      'สวัสดี, ยินดีต้อนรับ',
       style: TextStyle(
         fontSize: 35.0,
         letterSpacing: 1.5,
         color: Colors.black,
+        fontFamily: 'Kanit',
         fontWeight: FontWeight.bold,
       ),
     );

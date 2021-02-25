@@ -5,10 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tess/screens/components/manu.dart';
-import 'package:tess/widget/signin_addmin.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -477,40 +475,11 @@ class _AdddataState extends State<Adddata> {
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            RaisedButton(
-              color: Colors.white,
-              onPressed: () {
-                MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                    builder: (BuildContext context) => Admin());
-                Navigator.of(context).push(materialPageRoute);
-              },
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40)),
-              elevation: 16,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    'assets/images/admin.svg',
-                    height: 40,
-                  ),
-                  Text(
-                    'สำหรับผู้ดูแลระบบ',
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.blue[800],
-                      fontFamily: 'Kanit',
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             showImage(),
             showButton(),
-            uploadButton(),
+             uploadButton(),
             nameForm(),
             detailForm(),
             detail2Form(),
@@ -535,7 +504,7 @@ class _AdddataState extends State<Adddata> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightGreen[50],
+       backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.lightGreenAccent,
@@ -549,6 +518,7 @@ class _AdddataState extends State<Adddata> {
         ),
       ),
       body: Stack(
+        
         children: <Widget>[
           CustomPaint(
             child: Container(
@@ -558,6 +528,7 @@ class _AdddataState extends State<Adddata> {
             painter: HeaderCurvedContainer(),
           ),
           showContent(),
+         
         ],
       ),
     );

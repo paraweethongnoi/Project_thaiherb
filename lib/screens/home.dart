@@ -49,69 +49,69 @@
 //           fontFamily: 'Courgette'),
 //     );
 //   }
+//////////////////////////////////////////////////////////////////////////////
+  // Widget signInButton() {
+  //   return Container(
+  //     width: 350.0,
+  //     height: 50.0,
+  //     child: RaisedButton(
+  //       shape: new RoundedRectangleBorder(
+  //           borderRadius: new BorderRadius.circular(30.0)),
+  //       color: Colors.green.shade700,
+  //       child: Text(
+  //         'LOGIN',
+  //         style: TextStyle(
+  //             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+  //       ),
+  //       onPressed: () {
+  //         print('Tou Click Sign In');
 
-//   Widget signInButton() {
-//     return Container(
-//       width: 350.0,
-//       height: 50.0,
-//       child: RaisedButton(
-//         shape: new RoundedRectangleBorder(
-//             borderRadius: new BorderRadius.circular(30.0)),
-//         color: Colors.green.shade700,
-//         child: Text(
-//           'LOGIN',
-//           style: TextStyle(
-//               color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-//         ),
-//         onPressed: () {
-//           print('Tou Click Sign In');
+  //         MaterialPageRoute materialPageRoute =
+  //             MaterialPageRoute(builder: (BuildContext context) => Signin());
+  //         Navigator.of(context).push(materialPageRoute);
+  //       },
+  //     ),
+  //   );
+  // }
 
-//           MaterialPageRoute materialPageRoute =
-//               MaterialPageRoute(builder: (BuildContext context) => Signin());
-//           Navigator.of(context).push(materialPageRoute);
-//         },
-//       ),
-//     );
-//   }
+  // Widget signUpButton() {
+  //   return Container(
+  //     margin: EdgeInsets.symmetric(vertical: 20),
+  //     width: 350.0,
+  //     height: 50.0,
+  //     child: RaisedButton(
+  //       shape: new RoundedRectangleBorder(
+  //           borderRadius: new BorderRadius.circular(30.0)),
+  //       color: Colors.white,
+  //       child: Text('REGISTER',
+  //           style: TextStyle(
+  //             fontSize: 20,
+  //             fontWeight: FontWeight.bold,
+  //           )),
+  //       onPressed: () {
+  //         print('Tou Click Sign Up');
 
-//   Widget signUpButton() {
-//     return Container(
-//       margin: EdgeInsets.symmetric(vertical: 20),
-//       width: 350.0,
-//       height: 50.0,
-//       child: RaisedButton(
-//         shape: new RoundedRectangleBorder(
-//             borderRadius: new BorderRadius.circular(30.0)),
-//         color: Colors.white,
-//         child: Text('REGISTER',
-//             style: TextStyle(
-//               fontSize: 20,
-//               fontWeight: FontWeight.bold,
-//             )),
-//         onPressed: () {
-//           print('Tou Click Sign Up');
+  //         MaterialPageRoute materialPageRoute =
+  //             MaterialPageRoute(builder: (BuildContext context) => Register());
+  //         Navigator.of(context).push(materialPageRoute);
+  //       },
+  //     ),
+  //   );
+  // }
 
-//           MaterialPageRoute materialPageRoute =
-//               MaterialPageRoute(builder: (BuildContext context) => Register());
-//           Navigator.of(context).push(materialPageRoute);
-//         },
-//       ),
-//     );
-//   }
-
-//   Widget showButton() {
-//     return Column(
-//       mainAxisSize: MainAxisSize.min,
-//       children: <Widget>[
-//         signInButton(),
-//         SizedBox(
-//           width: 50.0,
-//         ),
-//         signUpButton(),
-//       ],
-//     );
-//   }
-
+  // Widget showButton() {
+  //   return Column(
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: <Widget>[
+  //       signInButton(),
+  //       SizedBox(
+  //         width: 50.0,
+  //       ),
+  //      // signUpButton(),
+  //     ],
+  //   );
+  // }
+////////////////////////////////////////////////////////////////////////////////////
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
@@ -132,7 +132,7 @@
 //               SizedBox(
 //                 height: 40.0,
 //               ),
-//               showButton(),
+//               //showButton(),
 //             ],
 //           ),
 //         ),

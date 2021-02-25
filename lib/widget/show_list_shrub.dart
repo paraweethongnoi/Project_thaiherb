@@ -14,6 +14,8 @@ class Showlistshrub extends StatefulWidget {
 class _ShowlistshrubState extends State<Showlistshrub> {
   DocumentSnapshot productModels;
   List products = [];
+  List productSearch = [];
+  final keyword = TextEditingController();
 
   @override
   void initState() {
@@ -164,39 +166,75 @@ class _ShowlistshrubState extends State<Showlistshrub> {
     );
   }
 
+  Widget showSearchView() {
+    return ListView.separated(
+      itemCount: productSearch.length,
+      separatorBuilder: (context, index) => Divider(),
+      itemBuilder: (BuildContext buildcontext, int index) {
+        return ListTile(
+          title: Text(productSearch[index]["Name"]),
+          onTap: () {
+            MaterialPageRoute route = MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    ShowdetailProduct(productSearch[index]));
+            Navigator.push(context, route);
+          },
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.lightGreen[400],
-        title: Text(
-          'ไม้พุ่ม',
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.white,
-            fontFamily: 'Kanit',
-            fontWeight: FontWeight.bold,
+        bottom: PreferredSize(
+          preferredSize: Size(double.infinity, 20),
+          child: TextFormField(
+            controller: keyword,
+            onChanged: (value) {
+              setState(() {
+                productSearch = products
+                    .where(
+                        (element) => (element["Name"].contains(keyword.text)))
+                    .toList();
+              });
+            },
+            decoration: InputDecoration(
+                labelText: 'ไม้พุ่ม (ค้นหา)',
+                labelStyle: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'Kanit',
+                    fontWeight: FontWeight.bold),
+                suffixIcon: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                )),
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          CustomPaint(
-            child: Container(
-              child: ListView.builder(
-                itemCount: products.length,
-                itemBuilder: (BuildContext buildcontext, int index) {
-                  return showListView(index);
-                },
-              ),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+      body: keyword.text != ""
+          ? showSearchView()
+          : Stack(
+              children: [
+                CustomPaint(
+                  child: Container(
+                    child: ListView.builder(
+                      itemCount: products.length,
+                      itemBuilder: (BuildContext buildcontext, int index) {
+                        return showListView(index);
+                      },
+                    ),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                  ),
+                  painter: HeaderCurvedContainer(),
+                ),
+              ],
             ),
-            painter: HeaderCurvedContainer(),
-          ),
-        ],
-      ),
     );
   }
 }

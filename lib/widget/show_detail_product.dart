@@ -116,25 +116,21 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                             ],
                           ),
                           //ชื่อวงศ์
-                          Row(
-                            children: [
-                              Text(
-                                "ชื่อวงศ์ : ",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.green[800],
-                                  fontFamily: 'Kanit',
-                                ),
-                              ),
-                              Text(
-                                widget.product["Familyname"],
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.green[800],
-                                  fontFamily: 'Kanit',
-                                ),
-                              ),
-                            ],
+                          Text(
+                            "ชื่อวงศ์ : ",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.green[800],
+                              fontFamily: 'Kanit',
+                            ),
+                          ),
+                          Text(
+                            widget.product["Familyname"],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.green[800],
+                              fontFamily: 'Kanit',
+                            ),
                           ),
 
                           //ชื่อพ้อง

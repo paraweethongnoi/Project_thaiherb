@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tess/screens/bmi1.dart';
-import 'package:tess/screens/register.dart';
 import 'package:tess/screens/signin.dart';
+
+import '../widget/delete_edit_product.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
 
     if (user != null) {
       MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Bmi1());
+          MaterialPageRoute(builder: (BuildContext context) => SettingScreen());
       Navigator.of(context).pushAndRemoveUntil(
           materialPageRoute, (Route<dynamic> route) => false);
     }
@@ -49,6 +49,7 @@ class _HomeState extends State<Home> {
           fontFamily: 'Courgette'),
     );
   }
+
 ////////////////////////////////////////////////////////////////////////////
   Widget signInButton() {
     return Container(
@@ -107,10 +108,11 @@ class _HomeState extends State<Home> {
         SizedBox(
           width: 50.0,
         ),
-       //signUpButton(),
+        //signUpButton(),
       ],
     );
   }
+
 //////////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
@@ -132,7 +134,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 40.0,
               ),
-             showButton(),
+              showButton(),
             ],
           ),
         ),

@@ -17,11 +17,11 @@ class _SettingScreenState extends State<HomeScreen> {
   String login = '...';
   final today = DateTime.now();
 
-  @override
-  void initState() {
-    super.initState();
-    //findDisplayName();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   //findDisplayName();
+  // }
 
   // Future<void> findDisplayName() async {
   //   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;

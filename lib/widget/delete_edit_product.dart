@@ -76,7 +76,6 @@ class _SettingScreenState extends State<SettingScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          
           CustomPaint(
             child: Container(
               width: MediaQuery.of(context).size.width,

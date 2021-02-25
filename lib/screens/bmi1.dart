@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tess/screens/components/infor.dart';
-//import 'package:tess/screens/components/information.dart';
+
 import 'package:tess/screens/components/manu.dart';
 import 'package:tess/screens/components/home_screen.dart';
-import 'package:tess/screens/components/setting.dart';
+
+import 'home.dart';
 
 class Bmi1 extends StatefulWidget {
   @override
@@ -26,10 +27,7 @@ class _Bmi1State extends State<Bmi1> {
         child: Scaffold(
       body: InforScreen(),
     )),
-    Center(
-        child: Scaffold(
-     // body: SettingScreen(),
-    ))
+    Center(child: Scaffold(body: Home()))
   ];
 
   @override

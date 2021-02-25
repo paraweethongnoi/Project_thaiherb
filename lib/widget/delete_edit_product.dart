@@ -8,53 +8,53 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  Widget signOutButton() {
-    return IconButton(
-      icon: Icon(
-        Icons.exit_to_app,
-        size: 40,
-      ),
-      tooltip: 'Sign Out',
-      onPressed: () {
-        myAlert();
-      },
-    );
-  }
+  // Widget signOutButton() {
+  //   return IconButton(
+  //     icon: Icon(
+  //       Icons.exit_to_app,
+  //       size: 40,
+  //     ),
+  //     tooltip: 'Sign Out',
+  //     onPressed: () {
+  //       myAlert();
+  //     },
+  //   );
+  // }
 
-  void myAlert() {
-    showDialog(
-        context: context,
-        builder: (BuildContext constext) {
-          return AlertDialog(
-            title: Text('Are You Sure ?'),
-            content: Text('Do You Want Sign Out ?'),
-            actions: <Widget>[
-              cancelButton(),
-              okButton(),
-            ],
-          );
-        });
-  }
+  // void myAlert() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext constext) {
+  //         return AlertDialog(
+  //           title: Text('Are You Sure ?'),
+  //           content: Text('Do You Want Sign Out ?'),
+  //           actions: <Widget>[
+  //             cancelButton(),
+  //             okButton(),
+  //           ],
+  //         );
+  //       });
+  // }
 
-  Widget okButton() {
-    return FlatButton(
-      child: Text('Ok'),
-      onPressed: () {
-        Navigator.of(context).pop();
-        procassSignOut();
-      },
-    );
-  }
+  // Widget okButton() {
+  //   return FlatButton(
+  //     child: Text('Ok'),
+  //     onPressed: () {
+  //       Navigator.of(context).pop();
+  //       procassSignOut();
+  //     },
+  //   );
+  // }
 
-  Future<void> procassSignOut() async {
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    await firebaseAuth.signOut().then((response) {
-      MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Bmi1());
-      Navigator.of(context).pushAndRemoveUntil(
-          materialPageRoute, (Route<dynamic> route) => false);
-    });
-  }
+  // Future<void> procassSignOut() async {
+  //   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  //   await firebaseAuth.signOut().then((response) {
+  //     MaterialPageRoute materialPageRoute =
+  //         MaterialPageRoute(builder: (BuildContext context) => Bmi1());
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //         materialPageRoute, (Route<dynamic> route) => false);
+  //   });
+  // }
 
   Widget cancelButton() {
     return FlatButton(
@@ -68,11 +68,11 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[signOutButton()],
-        elevation: 0.0,
-        backgroundColor: Colors.yellow.shade800,
-      ),
+      // appBar: AppBar(
+      //   actions: <Widget>[signOutButton()],
+      //   elevation: 0.0,
+      //   backgroundColor: Colors.yellow.shade800,
+      // ),
       body: Stack(
         alignment: Alignment.center,
         children: [

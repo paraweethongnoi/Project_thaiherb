@@ -50,29 +50,29 @@ class _HomeState extends State<Home> {
     );
   }
 ////////////////////////////////////////////////////////////////////////////
-  // Widget signInButton() {
-  //   return Container(
-  //     width: 350.0,
-  //     height: 50.0,
-  //     child: RaisedButton(
-  //       shape: new RoundedRectangleBorder(
-  //           borderRadius: new BorderRadius.circular(30.0)),
-  //       color: Colors.green.shade700,
-  //       child: Text(
-  //         'LOGIN',
-  //         style: TextStyle(
-  //             color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-  //       ),
-  //       onPressed: () {
-  //         print('Tou Click Sign In');
+  Widget signInButton() {
+    return Container(
+      width: 350.0,
+      height: 50.0,
+      child: RaisedButton(
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(30.0)),
+        color: Colors.green.shade700,
+        child: Text(
+          'LOGIN',
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        onPressed: () {
+          print('Tou Click Sign In');
 
-  //         MaterialPageRoute materialPageRoute =
-  //             MaterialPageRoute(builder: (BuildContext context) => Signin());
-  //         Navigator.of(context).push(materialPageRoute);
-  //       },
-  //     ),
-  //   );
-  // }
+          MaterialPageRoute materialPageRoute =
+              MaterialPageRoute(builder: (BuildContext context) => Signin());
+          Navigator.of(context).push(materialPageRoute);
+        },
+      ),
+    );
+  }
 
   // Widget signUpButton() {
   //   return Container(
@@ -99,18 +99,18 @@ class _HomeState extends State<Home> {
   //   );
   // }
 
-  // Widget showButton() {
-  //   return Column(
-  //     mainAxisSize: MainAxisSize.min,
-  //     children: <Widget>[
-  //       signInButton(),
-  //       SizedBox(
-  //         width: 50.0,
-  //       ),
-  //      //signUpButton(),
-  //     ],
-  //   );
-  // }
+  Widget showButton() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        signInButton(),
+        SizedBox(
+          width: 50.0,
+        ),
+       //signUpButton(),
+      ],
+    );
+  }
 //////////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
@@ -132,7 +132,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 40.0,
               ),
-             // showButton(),
+             showButton(),
             ],
           ),
         ),

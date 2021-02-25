@@ -23,7 +23,7 @@ class MyAppTien extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => SplashScreen(),
-        '/home': (BuildContext context) => Bmi1(),
+        '/home': (BuildContext context) => Home(),
       },
     );
   }

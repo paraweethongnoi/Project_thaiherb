@@ -480,35 +480,35 @@ class _AdddataState extends State<Adddata> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            RaisedButton(
-              color: Colors.white,
-              onPressed: () {
-                MaterialPageRoute materialPageRoute = MaterialPageRoute(
-                    builder: (BuildContext context) => Admin());
-                Navigator.of(context).push(materialPageRoute);
-              },
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40)),
-              elevation: 16,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    'assets/images/admin.svg',
-                    height: 40,
-                  ),
-                  Text(
-                    'สำหรับผู้ดูแลระบบ',
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.blue[800],
-                      fontFamily: 'Kanit',
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // RaisedButton(
+            //   color: Colors.white,
+            //   onPressed: () {
+            //     MaterialPageRoute materialPageRoute = MaterialPageRoute(
+            //         builder: (BuildContext context) => Admin());
+            //     Navigator.of(context).push(materialPageRoute);
+            //   },
+            //   shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(40)),
+            //   elevation: 16,
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.start,
+            //     children: <Widget>[
+            //       SvgPicture.asset(
+            //         'assets/images/admin.svg',
+            //         height: 40,
+            //       ),
+            //       Text(
+            //         'สำหรับผู้ดูแลระบบ',
+            //         style: TextStyle(
+            //           fontSize: 12.0,
+            //           color: Colors.blue[800],
+            //           fontFamily: 'Kanit',
+            //           // fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             showImage(),
             showButton(),
              uploadButton(),

@@ -5,8 +5,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tess/screens/bmi1.dart';
 import 'package:tess/screens/components/manu.dart';
+import 'package:tess/widget/signin_addmin.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -121,7 +124,7 @@ class _AdddataState extends State<Adddata> {
     if (user != null) {
       await firestore.collection("Product").doc().set(map).then((value) {
         MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => Manu());
+            MaterialPageRoute(builder: (BuildContext context) => Bmi1());
         Navigator.of(context).pushAndRemoveUntil(
             materialPageRoute, (Route<dynamic> route) => false);
       });
@@ -470,13 +473,42 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  Widget showContent() {
+   Widget showContent() {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            RaisedButton(
+              color: Colors.white,
+              onPressed: () {
+                MaterialPageRoute materialPageRoute = MaterialPageRoute(
+                    builder: (BuildContext context) => Admin());
+                Navigator.of(context).push(materialPageRoute);
+              },
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
+              elevation: 16,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SvgPicture.asset(
+                    'assets/images/admin.svg',
+                    height: 40,
+                  ),
+                  Text(
+                    'สำหรับผู้ดูแลระบบ',
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.blue[800],
+                      fontFamily: 'Kanit',
+                      // fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             showImage(),
             showButton(),
              uploadButton(),
@@ -506,6 +538,7 @@ class _AdddataState extends State<Adddata> {
     return Scaffold(
        backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
+        // leading: Icons.arrow_back,
         elevation: 0.0,
         backgroundColor: Colors.lightGreenAccent,
         title: Text(

@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/components/manu.dart';
 
+import 'delete_edit_product.dart';
+
 class Admin extends StatefulWidget {
   @override
   _AdminState createState() => _AdminState();
@@ -128,7 +130,7 @@ class _AdminState extends State<Admin> {
           .then((response) {
         print('Authen Success');
         MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => Manu());
+            MaterialPageRoute(builder: (BuildContext context) => SettingScreen());
         Navigator.of(context).pushAndRemoveUntil(
             materialPageRoute, (Route<dynamic> route) => false);
       }).catchError((response) {

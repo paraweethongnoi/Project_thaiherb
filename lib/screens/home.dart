@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/signin.dart';
+import 'package:tess/widget/delete_edit_product.dart';
 
-import '../widget/delete_edit_product.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,25 +11,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   //Method
-
+  var user;
+  DeleteEdite deleteEdit ;
   @override
   void initState() {
     super.initState();
     checkStatus();
+    deleteEdit = DeleteEdite(context);
   }
 
   Future<void> checkStatus() async {
     FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-    final user = await _firebaseAuth.currentUser;
-
-    if (user != null) {
-      MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => SettingScreen());
-      Navigator.of(context).pushAndRemoveUntil(
-          materialPageRoute, (Route<dynamic> route) => false);
+     user = _firebaseAuth.currentUser;
     }
-  }
-
   Widget showLogo() {
     return Container(
       width: 190.0,
@@ -113,11 +107,13 @@ class _HomeState extends State<Home> {
     );
   }
 
+  
+
 //////////////////////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
+        body: user != null ? deleteEdit.deleteEdit() : SafeArea(
       child: Container(
         decoration: BoxDecoration(
           gradient: RadialGradient(

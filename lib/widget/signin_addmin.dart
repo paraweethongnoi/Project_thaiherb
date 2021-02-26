@@ -129,10 +129,7 @@ class _AdminState extends State<Admin> {
           .signInWithEmailAndPassword(email: username, password: password)
           .then((response) {
         print('Authen Success');
-        MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => SettingScreen());
-        Navigator.of(context).pushAndRemoveUntil(
-            materialPageRoute, (Route<dynamic> route) => false);
+        Navigator.popAndPushNamed(context, "/home");
       }).catchError((response) {
         String title = response.code;
         String message = response.message;

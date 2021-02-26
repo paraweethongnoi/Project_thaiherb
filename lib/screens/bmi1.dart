@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/components/infor.dart';
 
@@ -13,6 +14,7 @@ class Bmi1 extends StatefulWidget {
 
 class _Bmi1State extends State<Bmi1> {
   int _currentIndex = 0;
+  FirebaseAuth firebaseAuth =FirebaseAuth.instance;
 
   final tabs = [
     Center(
@@ -53,6 +55,13 @@ class _Bmi1State extends State<Bmi1> {
             title: Text('Profile'),
             backgroundColor: Colors.pink.shade200,
           ),
+          firebaseAuth.currentUser == null ?
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('Settings'),
+            backgroundColor: Colors.green.shade300,
+          ) 
+          :
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             title: Text('Settings'),

@@ -121,14 +121,12 @@ class _AdddataState extends State<Adddata> {
     map['style'] = style1;
     map['Synonyms'] = synonyms1;
 
-    if (user != null) {
       await firestore.collection("Product").doc().set(map).then((value) {
         MaterialPageRoute materialPageRoute =
             MaterialPageRoute(builder: (BuildContext context) => Bmi1());
         Navigator.of(context).pushAndRemoveUntil(
             materialPageRoute, (Route<dynamic> route) => false);
       });
-    }
     print("OK");
   }
 

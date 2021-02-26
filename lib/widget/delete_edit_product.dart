@@ -1,21 +1,38 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/bmi1.dart';
+import 'package:tess/widget/show_edit_del_pd.dart';
 class DeleteEdite{
     final BuildContext _context;
     DeleteEdite(BuildContext context) : _context = context;
 
     
-  Widget signOutButton() {
-    return IconButton(
-      icon: Icon(
-        Icons.exit_to_app,
-        size: 40,
+  Widget signOutButton(String status,IconData icon,String text) {
+    return SizedBox(
+      width: MediaQuery.of(_context).size.width*0.9,
+      height: 60,
+      child: RaisedButton(
+        child: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+            icon,
+            size: 40,
+            ),
+            Text("$text")
+            ],
+          ),
+        ),
+        onPressed: 
+        status == "edit"? (){
+          MaterialPageRoute route = MaterialPageRoute(builder: (BuildContext _context)=>ShowEditDelPd());
+          Navigator.of(_context).push(route);
+        } 
+        :() {
+          myAlert();
+        },
       ),
-      tooltip: 'Sign Out',
-      onPressed: () {
-        myAlert();
-      },
     );
   }
 
@@ -63,7 +80,7 @@ class DeleteEdite{
     );
   }
 
-
+    //main state detele_edite//
     Widget deleteEdit(){
     return Stack(
         alignment: Alignment.center,
@@ -75,7 +92,14 @@ class DeleteEdite{
             ),
             painter: HeaderCurvedContainer(),
           ),
-          signOutButton()
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              signOutButton("edit",Icons.edit,"จัดการข้อมูลสมุนไพร"),
+              Padding(padding: EdgeInsets.only(bottom: 12)),
+              signOutButton("logout",Icons.exit_to_app,"ออกจากระบบ")
+            ],
+          ),
         ],
       );
   }

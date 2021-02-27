@@ -171,9 +171,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: name,
-        onChanged: (String string) {
-          name.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'Name',
           icon: Icon(Icons.park),
@@ -187,9 +184,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: detail,
-        onChanged: (String string) {
-          detail.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ชื่อวิทยาศาสตร์ : ',
           icon: Icon(
@@ -206,9 +200,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: detail2,
-        onChanged: (String string) {
-          detail2.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ชื่อท้องถิ่น : ',
           icon: Icon(
@@ -225,9 +216,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: englishname,
-        onChanged: (String string) {
-          englishname.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ชื่ออังกฤษ : ',
           icon: Icon(
@@ -244,9 +232,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: familyname,
-        onChanged: (String string) {
-          familyname.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ชื่อวงศ์ : ',
           icon: Icon(
@@ -263,9 +248,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: important,
-        onChanged: (String string) {
-          important.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'สารสำคัญที่ออกฤทธิ์ : ',
           icon: Icon(
@@ -282,9 +264,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: partused,
-        onChanged: (String string) {
-          partused.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ส่วนที่ใช้เป็นยาและสรรพคุณ : ',
           icon: Icon(Icons.celebration, color: Colors.teal),
@@ -298,9 +277,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: look1,
-        onChanged: (String string) {
-          look1.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ลักษณะทางพฤกษศาสตร์ : ',
           icon: Icon(
@@ -317,9 +293,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: eat1,
-        onChanged: (String string) {
-          eat1.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'รูปแบบและขนาดวิธีใช้ยา : ',
           icon: Icon(
@@ -336,9 +309,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: beware1,
-        onChanged: (String string) {
-          beware1.text = string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ข้อควรระวัง : ',
           icon: Icon(

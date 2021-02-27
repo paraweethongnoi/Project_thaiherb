@@ -397,9 +397,6 @@ class _EditListProductState extends State<EditListProduct> {
       width: MediaQuery.of(context).size.width * 0.9,
       child: TextField(
         controller: synonyms1,
-        onChanged: (String string) {
-          synonyms1.text= string.trim();
-        },
         decoration: InputDecoration(
           labelText: 'ชื่อพ้อง : ',
           icon: Icon(

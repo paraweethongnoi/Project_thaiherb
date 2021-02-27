@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:tess/widget/edit_list_product.dart';
 
 class ShowEditDelPd extends StatefulWidget {
   ShowEditDelPd({Key key}) : super(key: key);
@@ -83,7 +84,11 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
                     leading: IconButton(
                       icon: Icon(Icons.edit),
                       onPressed: () {
-                        print(products[index]["docid"]);
+                        MaterialPageRoute route = MaterialPageRoute(builder: (BuildContext _context)=>EditListProduct(products[index]));
+                        Navigator.of(context).push(route).then((value) {setState(() {
+                          products = [];
+                          readAllData();
+                        });});
                       },
                     ),
                     title: Text(products[index]["Name"]),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +16,18 @@ class _TalkState extends State<Talk> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   List talks = [];
 
+  Timer _timer;
+
+  void startTimer() {
+    const oneSec = const Duration(minutes: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        setState(() {});
+      },
+    );
+  }
+
   Future<void> readAllData() async {
     // ignore: deprecated_member_use
     final collectionReference = await firestore
@@ -25,43 +39,43 @@ class _TalkState extends State<Talk> {
                 map = doc.data();
                 setState(() {
                   talks.add(map);
-                  talks.sort((m1,m2)=>m2["talkId"].compareTo(m1["talkId"]));
+                  talks.sort((m1, m2) => m2["talkId"].compareTo(m1["talkId"]));
                 });
                 print(talks.toList());
               })
             });
   }
 
-  String dateTimeConvert(String datetime){
+  String dateTimeConvert(String datetime) {
     var datesSplit = datetime.split(",");
     int year = int.parse(datesSplit[0]);
     int month = int.parse(datesSplit[1]);
     int day = int.parse(datesSplit[2]);
     int hour = int.parse(datesSplit[3]);
     int minute = int.parse(datesSplit[4]);
-    var date = DateTime(year,month,day,hour,minute);
+    var date = DateTime(year, month, day, hour, minute);
     var now = DateTime.now();
-    String resolt ;
-      if(now.difference(date).inDays != 0){
-          resolt = "โพส์เมื่อ ${DateFormat('dd MMMM yyyy').format(date)}";
-      }else if(now.difference(date).inHours != 0){
-        resolt = "โพส์เมื่อ ${now.difference(date).inHours} ชั่วโมงที่แล้ว";
-      }else if(now.difference(date).inMinutes != 0){
-        resolt = "โพส์เมื่อ ${now.difference(date).inMinutes} นาทีที่แล้ว";
-      }
-      else{
-        resolt = "โพส์เมื่อสักครู่";
-      }
-      return resolt;
+    String resolt;
+    if (now.difference(date).inDays != 0) {
+      resolt = "โพส์เมื่อ ${DateFormat('dd MMMM yyyy').format(date)}";
+    } else if (now.difference(date).inHours != 0) {
+      resolt = "โพส์เมื่อ ${now.difference(date).inHours} ชั่วโมงที่แล้ว";
+    } else if (now.difference(date).inMinutes != 0) {
+      resolt = "โพส์เมื่อ ${now.difference(date).inMinutes} นาทีที่แล้ว";
+    } else {
+      resolt = "โพส์เมื่อสักครู่";
+    }
+    return resolt;
   }
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     readAllData();
+    startTimer();
   }
 
-Widget showdata() {
+  Widget showdata() {
     return ListView.builder(
         itemCount: talks.length,
         itemBuilder: (context, index) {
@@ -70,8 +84,8 @@ Widget showdata() {
             child: SizedBox(
               height: 65,
               child: Card(
-                child:Container(
-                  padding: EdgeInsets.only(left:18),
+                child: Container(
+                  padding: EdgeInsets.only(left: 18),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -96,14 +110,15 @@ Widget showdata() {
       body: showdata(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.comment),
-        onPressed: (){
-            MaterialPageRoute route = MaterialPageRoute(builder: (BuildContext context)=>TalkPost());
-            Navigator.push(context, route).then((value){
-              setState(() {
-                talks = [];
-                readAllData();
-              });
+        onPressed: () {
+          MaterialPageRoute route =
+              MaterialPageRoute(builder: (BuildContext context) => TalkPost());
+          Navigator.push(context, route).then((value) {
+            setState(() {
+              talks = [];
+              readAllData();
             });
+          });
         },
       ),
     );

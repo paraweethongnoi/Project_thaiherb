@@ -7,6 +7,7 @@ import 'package:tess/widget/show_covid.dart';
 import 'package:tess/widget/show_list_product.dart';
 import 'package:tess/widget/show_list_smoking.dart';
 import 'package:tess/widget/show_map.dart';
+import 'package:tess/widget/talk.dart';
 
 
 class Manu extends StatefulWidget {
@@ -291,7 +292,7 @@ class _ManuState extends State<Manu> {
                               MaterialPageRoute materialPageRoute =
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ShowListProduct());
+                                          Talk());
                               Navigator.of(context).push(materialPageRoute);
                             },
                             shape: RoundedRectangleBorder(

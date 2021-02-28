@@ -18,8 +18,10 @@ class Adddata extends StatefulWidget {
 
 class _AdddataState extends State<Adddata> {
   File file;
-  // File _image;
+  File image;
   // File _imgReceipt;
+  List<bool> isSelected = [true, false];
+  int boxbtnsta = 0;
   String name,
       detail,
       detail2,
@@ -51,6 +53,9 @@ class _AdddataState extends State<Adddata> {
               if (file == null) {
                 showAlert('คุณยังไม่ได้เลือกรูป',
                     'กรุณาเลือกรูปภาพ หรือ Upload รูปภาพ');
+              } else if(image == null){
+                showAlert('คุณยังไม่ได้เลือกรูปที่2',
+                    'กรุณากดที่ รูปที่2 เลือกรูปภาพ หรือ Upload รูปภาพ');
               } else if (name == null ||
                   name.isEmpty ||
                   detail == null ||
@@ -93,7 +98,11 @@ class _AdddataState extends State<Adddata> {
         .ref()
         .child('Product/product$i.jpg')
         .getDownloadURL();
-    print('urlPcture =$urlPcture');
+    await firebaseStorage.ref().child('Product/product2$i.jpg').putFile(image);
+    urlPcture2 = await firebaseStorage
+        .ref()
+        .child('Product/product$i.jpg')
+        .getDownloadURL();
     await setupDisplayName();
   }
 
@@ -108,6 +117,7 @@ class _AdddataState extends State<Adddata> {
     map['Detail'] = detail;
     map['Detail2'] = detail2;
     map['PathImage'] = urlPcture;
+    map['PathImage2'] = urlPcture2;
     map['Englishname'] = englishname;
     map['Familyname'] = familyname;
     map['Important'] = important;
@@ -121,12 +131,12 @@ class _AdddataState extends State<Adddata> {
     map['style'] = style1;
     map['Synonyms'] = synonyms1;
 
-      await firestore.collection("Product").doc().set(map).then((value) {
-        MaterialPageRoute materialPageRoute =
-            MaterialPageRoute(builder: (BuildContext context) => Bmi1());
-        Navigator.of(context).pushAndRemoveUntil(
-            materialPageRoute, (Route<dynamic> route) => false);
-      });
+    await firestore.collection("Product").doc().set(map).then((value) {
+      MaterialPageRoute materialPageRoute =
+          MaterialPageRoute(builder: (BuildContext context) => Bmi1());
+      Navigator.of(context).pushAndRemoveUntil(
+          materialPageRoute, (Route<dynamic> route) => false);
+    });
     print("OK");
   }
 
@@ -435,7 +445,11 @@ class _AdddataState extends State<Adddata> {
       );
 
       setState(() {
-        file = File(object.path);
+        if(boxbtnsta == 0){
+          file = File(object.path);
+        }else{
+          image = File(object.path);
+        }
       });
     } catch (e) {}
   }
@@ -467,11 +481,14 @@ class _AdddataState extends State<Adddata> {
       height: MediaQuery.of(context).size.height * 0.3,
       child: file == null
           ? Image.asset('assets/images/imageadd.png')
-          : Image.file(file),
+          : boxbtnsta == 0 ? Image.file(file) : 
+          image == null 
+          ? Image.asset('assets/images/imageadd.png')
+          : Image.file(image),
     );
   }
 
-   Widget showContent() {
+  Widget showContent() {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -507,9 +524,38 @@ class _AdddataState extends State<Adddata> {
             //     ],
             //   ),
             // ),
+            Center(
+              child: Container(
+                color: Colors.grey.shade300,
+                child: ToggleButtons(
+                  fillColor: Colors.white,
+                  selectedColor: Colors.black,
+                  children: <Widget>[
+                    Text("รูปที่1"),
+                    Text("รูปที่2"),
+                  ],
+                  onPressed: (int index) {
+                    setState(() {
+                      if(index != boxbtnsta){
+                        boxbtnsta = index;
+                      for (int buttonIndex = 0;
+                          buttonIndex < isSelected.length;
+                          buttonIndex++) {
+                        if (buttonIndex == index) {
+                          isSelected[buttonIndex] = !isSelected[buttonIndex];
+                        } else {
+                          isSelected[buttonIndex] = false;
+                        }
+                      }}
+                    });
+                  },
+                  isSelected: isSelected,
+                ),
+              ),
+            ),
             showImage(),
             showButton(),
-             uploadButton(),
+            uploadButton(),
             nameForm(),
             detailForm(),
             detail2Form(),
@@ -534,7 +580,7 @@ class _AdddataState extends State<Adddata> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.lightGreen[50],
+      backgroundColor: Colors.lightGreen[50],
       appBar: AppBar(
         // leading: Icons.arrow_back,
         elevation: 0.0,
@@ -549,7 +595,6 @@ class _AdddataState extends State<Adddata> {
         ),
       ),
       body: Stack(
-        
         children: <Widget>[
           CustomPaint(
             child: Container(
@@ -559,7 +604,6 @@ class _AdddataState extends State<Adddata> {
             painter: HeaderCurvedContainer(),
           ),
           showContent(),
-         
         ],
       ),
     );

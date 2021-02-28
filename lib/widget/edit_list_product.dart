@@ -20,6 +20,9 @@ class _EditListProductState extends State<EditListProduct> {
   File file;
   // File _image;
   // File _imgReceipt;
+  File image;
+  List<bool> isSelected = [true, false];
+  int boxbtnsta = 0;
   final name = TextEditingController();
   final detail = TextEditingController();
   final detail2 = TextEditingController();
@@ -36,7 +39,7 @@ class _EditListProductState extends State<EditListProduct> {
   final style1 = TextEditingController();
   final smoking1 = TextEditingController();
   String urlPcture ;
-  final urlPcture2 = TextEditingController();
+  String urlPcture2 ;
 
   @override
   void initState() {
@@ -45,6 +48,7 @@ class _EditListProductState extends State<EditListProduct> {
     detail.text = widget.product['Detail'];
     detail2.text = widget.product['Detail2'];
     urlPcture = widget.product['PathImage'];
+    urlPcture2 = widget.product['PathImage2'];
     englishname.text = widget.product['Englishname'];
     familyname.text = widget.product['Familyname'];
     important.text = widget.product['Important'];
@@ -114,6 +118,16 @@ class _EditListProductState extends State<EditListProduct> {
         .getDownloadURL();
     print('urlPcture =$urlPcture');
     }
+    if (image == null) {
+      urlPcture2 = widget.product['PathImage2'];
+    } else{ 
+    await firebaseStorage.ref().child('Product/product$i.jpg').putFile(image);
+    urlPcture2 = await firebaseStorage
+        .ref()
+        .child('Product/product2$i.jpg')
+        .getDownloadURL();
+    print('urlPcture =$urlPcture2');
+    }
     await setupDisplayName();
   }
 
@@ -128,6 +142,7 @@ class _EditListProductState extends State<EditListProduct> {
     map['Detail'] = detail.text;
     map['Detail2'] = detail2.text;
     map['PathImage'] = urlPcture;
+    map['PathImage2'] = urlPcture2;
     map['Englishname'] = englishname.text;
     map['Familyname'] = familyname.text;
     map['Important'] = important.text;
@@ -430,7 +445,11 @@ class _EditListProductState extends State<EditListProduct> {
       );
 
       setState(() {
-        file = File(object.path);
+        if(boxbtnsta == 0){
+          file = File(object.path);
+        }else{
+          image = File(object.path);
+        }
       });
     } catch (e) {}
   }
@@ -460,9 +479,8 @@ class _EditListProductState extends State<EditListProduct> {
       //color: Colors.grey,
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.3,
-      child: file == null
-          ? Image.network(urlPcture)
-          : Image.file(file),
+      child: boxbtnsta == 0 ? file == null ? Image.network(urlPcture) : Image.file(file) :
+      image == null ? Image.network(urlPcture2) : Image.file(image) 
     );
   }
 
@@ -502,6 +520,35 @@ class _EditListProductState extends State<EditListProduct> {
             //     ],
             //   ),
             // ),
+            Center(
+              child: Container(
+                color: Colors.grey.shade300,
+                child: ToggleButtons(
+                  fillColor: Colors.white,
+                  selectedColor: Colors.black,
+                  children: <Widget>[
+                    Text("รูปที่1"),
+                    Text("รูปที่2"),
+                  ],
+                  onPressed: (int index) {
+                    setState(() {
+                      if(index != boxbtnsta){
+                        boxbtnsta = index;
+                      for (int buttonIndex = 0;
+                          buttonIndex < isSelected.length;
+                          buttonIndex++) {
+                        if (buttonIndex == index) {
+                          isSelected[buttonIndex] = !isSelected[buttonIndex];
+                        } else {
+                          isSelected[buttonIndex] = false;
+                        }
+                      }}
+                    });
+                  },
+                  isSelected: isSelected,
+                ),
+              ),
+            ),
             showImage(),
             showButton(),
             uploadButton(),

@@ -64,11 +64,11 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
         });
   }
 
-  Future<bool> deledata(String docid)async{
-        await firestore.collection("Product").doc(docid).delete();
-        products = [];
-        readAllData();
-        return true;
+  Future<bool> deledata(String docid) async {
+    await firestore.collection("Product").doc(docid).delete();
+    products = [];
+    readAllData();
+    return true;
   }
 
   Widget showdata() {
@@ -84,11 +84,15 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
                     leading: IconButton(
                       icon: Icon(Icons.edit),
                       onPressed: () {
-                        MaterialPageRoute route = MaterialPageRoute(builder: (BuildContext _context)=>EditListProduct(products[index]));
-                        Navigator.of(context).push(route).then((value) {setState(() {
-                          products = [];
-                          readAllData();
-                        });});
+                        MaterialPageRoute route = MaterialPageRoute(
+                            builder: (BuildContext _context) =>
+                                EditListProduct(products[index]));
+                        Navigator.of(context).push(route).then((value) {
+                          setState(() {
+                            products = [];
+                            readAllData();
+                          });
+                        });
                       },
                     ),
                     title: Text(products[index]["Name"]),
@@ -129,7 +133,19 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.deepOrange[300],
+        title: Text(
+          'แก้ไข / ลบ',
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+            fontFamily: 'Kanit',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: showdata(),
     );
   }

@@ -1,6 +1,7 @@
+import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:tess/screens/bmi1.dart';
 import 'package:tess/widget/show_edit_del_pd.dart';
 
@@ -10,65 +11,42 @@ class DeleteEdite {
 
   Widget signOutButton(String status, IconData icon, String text) {
     return SizedBox(
-        width: MediaQuery.of(_context).size.width * 0.9,
-        height: 60,
-        child: GridView.count(
-          mainAxisSpacing: 60,
-          crossAxisSpacing: 5,
-          crossAxisCount: 2,
-          primary: false,
-          children: <Widget>[
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40)),
-              elevation: 16,
-              child: Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/spice.svg',
-                      height: 120,
-                    ),
-                    Text("$text")
-                  ],
-                ),
+      width: MediaQuery.of(_context).size.width * 0.9,
+      height: 90,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+        color: Colors.orange,
+        child: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                icon,
+                size: 40,
+                color: Colors.white,
               ),
-              onPressed: status == "edit"
-                  ? () {
-                      MaterialPageRoute route = MaterialPageRoute(
-                          builder: (BuildContext _context) => ShowEditDelPd());
-                      Navigator.of(_context).push(route);
-                    }
-                  : () {
-                      myAlert();
-                    },
-            ),
-          ],
-        )
-        // child: RaisedButton(
-        //   child: Center(
-        //     child: Row(
-        //       mainAxisSize: MainAxisSize.min,
-        //       children: [
-        //         Icon(
-        //       icon,
-        //       size: 40,
-        //       ),
-        //       Text("$text")
-        //       ],
-        //     ),
-        //   ),
-        //   onPressed:
-        //   status == "edit"? (){
-        //     MaterialPageRoute route = MaterialPageRoute(builder: (BuildContext _context)=>ShowEditDelPd());
-        //     Navigator.of(_context).push(route);
-        //   }
-        //   :() {
-        //     myAlert();
-        //   },
-        // ),
-        );
+              Text(
+                "$text",
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.black,
+                  fontFamily: 'Kanit',
+                ),
+              )
+            ],
+          ),
+        ),
+        onPressed: status == "edit"
+            ? () {
+                MaterialPageRoute route = MaterialPageRoute(
+                    builder: (BuildContext _context) => ShowEditDelPd());
+                Navigator.of(_context).push(route);
+              }
+            : () {
+                myAlert();
+              },
+      ),
+    );
   }
 
   void myAlert() {
@@ -93,6 +71,17 @@ class DeleteEdite {
         Navigator.of(_context).pop();
         procassSignOut();
       },
+    );
+  }
+
+  Widget showtext() {
+    return Text(
+      'สำหรับผู้ดูแลระบบ',
+      style: TextStyle(
+          fontSize: 20.0,
+          color: Colors.green.shade700,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Kanit'),
     );
   }
 
@@ -127,11 +116,42 @@ class DeleteEdite {
           ),
           painter: HeaderCurvedContainer(),
         ),
+        
+        SafeArea(
+            child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Column(children: <Widget>[
+                  Container(
+                    height: 120,
+                    margin: EdgeInsets.only(bottom: 50),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('สำหรับผู้ดูแลระบบ',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Kanit',
+                                ))
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ]))),
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             signOutButton("edit", Icons.edit, "จัดการข้อมูลสมุนไพร"),
-            Padding(padding: EdgeInsets.only(bottom: 12)),
+            Padding(padding: EdgeInsets.only(bottom: 20)),
             signOutButton("logout", Icons.exit_to_app, "ออกจากระบบ")
           ],
         ),

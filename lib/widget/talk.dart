@@ -52,50 +52,39 @@ class _TalkState extends State<Talk> {
             child: Card(
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 18,vertical: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                          child: Column(
+                  child: 
+                            Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(portController
                                 .dateTimeConvert(talks[index]["datetime"])),
                             Text(talks[index]["talkDetail"]),
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                        icon: Row(
-                          children: [
-                            Text(
-                              "${talks[index]["coments"].length}",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.red,
-                                fontFamily: 'Kanit',
-                              ),
-                            ),
-                            Icon(
-                              Icons.comment,
-                              color: Colors.red,
-                            ),
-                          ],
-                        ),
+                            Divider(),
+                            Row(
+                              children: [
+                                IconButton(
+                        icon: 
+                                Icon(
+                                  Icons.comment,
+                                  color: Colors.red,
+                                ),
                         onPressed: () {
                           MaterialPageRoute route = MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  TalkPostDocId("${talks[index]["docid"]}"));
+                                  builder: (BuildContext context) =>
+                                      TalkPostDocId("${talks[index]["docid"]}"));
                           Navigator.push(context, route).then((value) {
-                            setState(() {
-                              dataread();
-                            });
+                                setState(() {
+                                  dataread();
+                                });
                           });
                         },
-                      )
-                    ],
                   ),
+                  Text("${talks[index]["coments"].length}"),
+                              ],
+                            ),
+                          ],
+                      ),
                 ),
               ),
           );

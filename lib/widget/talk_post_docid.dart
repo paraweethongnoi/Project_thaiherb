@@ -84,8 +84,11 @@ class _TalkPostDocIdState extends State<TalkPostDocId> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: ListView(
-        children: [showdata(), showcoments()],
+      body: Container(
+        padding: EdgeInsets.only(bottom: 60),
+        child: ListView(
+          children: [showdata(), showcoments()],
+        ),
       ),
       floatingActionButton: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),

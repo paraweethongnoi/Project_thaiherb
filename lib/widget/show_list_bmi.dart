@@ -142,7 +142,7 @@ class _ShowlistbmiState extends State<Showlistbmi> {
         elevation: 0.0,
         backgroundColor: Colors.teal[300],
         title: Text(
-          'สมุนไพรช่วยเลิกบุหรี่',
+          'สมุนไพรช่วยลดน้ำหนัก',
           style: TextStyle(
             fontSize: 20.0,
             color: Colors.white,

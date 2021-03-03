@@ -1,5 +1,3 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:tess/screens/bmi1.dart';
@@ -54,8 +52,8 @@ class DeleteEdite {
         context: _context,
         builder: (BuildContext constext) {
           return AlertDialog(
-            title: Text('Are You Sure ?'),
-            content: Text('Do You Want Sign Out ?'),
+            title: Text('คุณแน่ใจใช่ไหม ?'),
+            content: Text('คุณต้องการที่จะออกจากระบบ ?'),
             actions: <Widget>[
               cancelButton(),
               okButton(),
@@ -66,7 +64,7 @@ class DeleteEdite {
 
   Widget okButton() {
     return FlatButton(
-      child: Text('Ok'),
+      child: Text('ใช่'),
       onPressed: () {
         Navigator.of(_context).pop();
         procassSignOut();
@@ -85,6 +83,26 @@ class DeleteEdite {
     );
   }
 
+  Widget showLogo() {
+    return Container(
+      width: 100.0,
+      height: 100.0,
+      child: Image.asset('assets/images/logo.png'),
+    );
+  }
+
+  Widget showAppName() {
+    return Text(
+      'Thai herbs',
+      style: TextStyle(
+          fontSize: 30.0,
+          color: Colors.green.shade700,
+          fontWeight: FontWeight.bold,
+          fontStyle: FontStyle.italic,
+          fontFamily: 'Courgette'),
+    );
+  }
+
   Future<void> procassSignOut() async {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     await firebaseAuth.signOut().then((response) {
@@ -97,7 +115,7 @@ class DeleteEdite {
 
   Widget cancelButton() {
     return FlatButton(
-      child: Text('Cancel'),
+      child: Text('ยกเลิก'),
       onPressed: () {
         Navigator.of(_context).pop();
       },
@@ -116,40 +134,46 @@ class DeleteEdite {
           ),
           painter: HeaderCurvedContainer(),
         ),
-        
         SafeArea(
-            child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Column(children: <Widget>[
-                  Container(
-                    height: 120,
-                    margin: EdgeInsets.only(bottom: 50),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('สำหรับผู้ดูแลระบบ',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Kanit',
-                                ))
-                          ],
-                        )
-                      ],
-                    ),
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  height: 120,
+                  margin: EdgeInsets.only(bottom: 50),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text('สำหรับผู้ดูแลระบบ',
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Kanit',
+                              ))
+                        ],
+                      ),
+                    ],
                   ),
-                ]))),
+                ),
+              ],
+            ),
+          ),
+        ),
         Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            showLogo(),
+            showAppName(),
+            Padding(padding: EdgeInsets.only(bottom: 20)),
             signOutButton("edit", Icons.edit, "จัดการข้อมูลสมุนไพร"),
             Padding(padding: EdgeInsets.only(bottom: 20)),
             signOutButton("logout", Icons.exit_to_app, "ออกจากระบบ")

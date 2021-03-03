@@ -63,14 +63,31 @@ class _TalkState extends State<Talk> {
                         children: [
                           Text(portController
                               .dateTimeConvert(talks[index]["datetime"])),
-                          Text(talks[index]["talkDetail"]),
+                          Text(
+                            talks[index]["talkDetail"],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.black,
+                              fontFamily: 'Kanit',
+                            ),
+                          ),
                         ],
                       ),
                       IconButton(
                         icon: Row(
                           children: [
-                            Text("${talks[index]["coments"].length}"),
-                            Icon(Icons.comment),
+                            Text(
+                              "${talks[index]["coments"].length}",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                color: Colors.red,
+                                fontFamily: 'Kanit',
+                              ),
+                            ),
+                            Icon(
+                              Icons.comment,
+                              color: Colors.red,
+                            ),
                           ],
                         ),
                         onPressed: () {
@@ -97,9 +114,34 @@ class _TalkState extends State<Talk> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("บทสนทนา"),
+        backgroundColor: Colors.indigo[400],
+        title: Text(
+          "บทสนทนา",
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+            fontFamily: 'Kanit',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
-      body: showdata(),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFFffffff),
+              const Color(0xFFE8EAF6),
+            ],
+          ),
+        ),
+        child: Stack(
+          children: [
+            showdata(),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.comment),
         onPressed: () {

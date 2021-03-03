@@ -44,17 +44,17 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
         context: context,
         builder: (BuildContext constext) {
           return AlertDialog(
-            title: Text('Are You Sure ?'),
-            content: Text('Do You Want Delete Product ?'),
+            title: Text('คุณแน่ใจใช่ไหม ?'),
+            content: Text('คุณต้องการที่จะลบ รายการสมุนไพรนี้?'),
             actions: <Widget>[
               FlatButton(
-                child: Text('Cancel'),
+                child: Text('ยกเลิก'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
               FlatButton(
-                child: Text('Ok'),
+                child: Text('ใช่'),
                 onPressed: () {
                   deledata(docid).then((value) => Navigator.of(context).pop());
                 },
@@ -82,7 +82,10 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
               child: Card(
                 child: ListTile(
                     leading: IconButton(
-                      icon: Icon(Icons.edit),
+                      icon: Icon(
+                        Icons.edit,
+                        color: Colors.blue,
+                      ),
                       onPressed: () {
                         MaterialPageRoute route = MaterialPageRoute(
                             builder: (BuildContext _context) =>
@@ -95,7 +98,15 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
                         });
                       },
                     ),
-                    title: Text(products[index]["Name"]),
+                    title: Text(
+                      products[index]["Name"],
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.green[900],
+                        fontFamily: 'Kanit',
+                        
+                      ),
+                    ),
                     trailing: IconButton(
                       icon: Icon(
                         Icons.delete,
@@ -105,7 +116,7 @@ class _ShowEditDelPdState extends State<ShowEditDelPd> {
                         myAlert(products[index]["docid"]);
                       },
                     )),
-                color: Colors.white,
+                color: Colors.amber[50],
               ),
             ),
           );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/screens/bmi1.dart';
 import 'package:tess/widget/show_edit_del_pd.dart';
 
+
 class DeleteEdite {
   final BuildContext _context;
   DeleteEdite(BuildContext context) : _context = context;
@@ -124,62 +125,75 @@ class DeleteEdite {
 
   //main state detele_edite//
   Widget deleteEdit() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        CustomPaint(
-          child: Container(
-            width: MediaQuery.of(_context).size.width,
-            height: MediaQuery.of(_context).size.height,
+    return Container(
+    decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color(0xFFffffff),
+              const Color(0xFFFFE4B5),
+            ],
           ),
-          painter: HeaderCurvedContainer(),
         ),
-        SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 120,
-                  margin: EdgeInsets.only(bottom: 50),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text('สำหรับผู้ดูแลระบบ',
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Kanit',
-                              ))
-                        ],
-                      ),
-                    ],
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CustomPaint(
+            child: Container(
+              width: MediaQuery.of(_context).size.width,
+              height: MediaQuery.of(_context).size.height,
+            ),
+            painter: HeaderCurvedContainer(),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    
+                    height: 120,
+                    margin: EdgeInsets.only(bottom: 50),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('สำหรับผู้ดูแลระบบ',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Kanit',
+                                ))
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            showLogo(),
-            showAppName(),
-            Padding(padding: EdgeInsets.only(bottom: 20)),
-            signOutButton("edit", Icons.edit, "จัดการข้อมูลสมุนไพร"),
-            Padding(padding: EdgeInsets.only(bottom: 20)),
-            signOutButton("logout", Icons.exit_to_app, "ออกจากระบบ")
-          ],
-        ),
-      ],
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              showLogo(),
+              showAppName(),
+              Padding(padding: EdgeInsets.only(bottom: 20)),
+              signOutButton("edit", Icons.edit, "จัดการข้อมูลสมุนไพร"),
+              Padding(padding: EdgeInsets.only(bottom: 20)),
+              signOutButton("logout", Icons.exit_to_app, "ออกจากระบบ")
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

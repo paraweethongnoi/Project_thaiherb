@@ -55,7 +55,6 @@ class _TalkState extends State<Talk> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-<<<<<<< HEAD
                       Expanded(
                           child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,23 +65,6 @@ class _TalkState extends State<Talk> {
                             Text(talks[index]["talkDetail"]),
                           ],
                         ),
-=======
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(portController
-                              .dateTimeConvert(talks[index]["datetime"])),
-                          Text(
-                            talks[index]["talkDetail"],
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black,
-                              fontFamily: 'Kanit',
-                            ),
-                          ),
-                        ],
->>>>>>> 316d6cf806ba4ad0a148715440161e94960c3713
                       ),
                       IconButton(
                         icon: Row(

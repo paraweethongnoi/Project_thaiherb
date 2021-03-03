@@ -33,27 +33,17 @@ class _TalkPostDocIdState extends State<TalkPostDocId> {
         ? Container()
         : Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-            child: SizedBox(
-              height: 65,
-              child: Card(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Card(
+              child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                              portController.dateTimeConvert(post["datetime"])),
-                          Text(post["talkDetail"]),
-                        ],
-                      )
+                      Text(portController.dateTimeConvert(post["datetime"])),
+                      Text(post["talkDetail"])
                     ],
-                  ),
-                ),
-              ),
+                  )),
             ),
           );
   }
@@ -61,29 +51,28 @@ class _TalkPostDocIdState extends State<TalkPostDocId> {
   Widget showcoments() {
     return Column(
         children: List.generate(coments.length, (index) {
-          int last = coments.length;
+      int last = coments.length;
       return Container(
         padding: EdgeInsets.only(left: 25),
         margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-        child: SizedBox(
-          height: 65,
-          child: Card(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 18),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+        child: Card(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 18, vertical: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                    child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(portController
-                          .dateTimeConvert(coments[last-(index+1)]["datetime"])),
-                      Text(coments[last-(index+1)]["talkDetail"]),
+                      Text(portController.dateTimeConvert(
+                          coments[last - (index + 1)]["datetime"])),
+                      Text(coments[last - (index + 1)]["talkDetail"])
                     ],
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ),

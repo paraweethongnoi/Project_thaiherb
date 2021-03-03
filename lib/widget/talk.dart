@@ -49,22 +49,22 @@ class _TalkState extends State<Talk> {
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-            child: SizedBox(
-              height: 65,
-              child: Card(
+            child: Card(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 18,vertical: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(portController
-                              .dateTimeConvert(talks[index]["datetime"])),
-                          Text(talks[index]["talkDetail"]),
-                        ],
+                      Expanded(
+                          child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(portController
+                                .dateTimeConvert(talks[index]["datetime"])),
+                            Text(talks[index]["talkDetail"]),
+                          ],
+                        ),
                       ),
                       IconButton(
                         icon: Row(
@@ -88,7 +88,6 @@ class _TalkState extends State<Talk> {
                   ),
                 ),
               ),
-            ),
           );
         });
   }

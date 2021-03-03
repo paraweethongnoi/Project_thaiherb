@@ -5,11 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tess/screens/bmi1.dart';
-import 'package:tess/screens/components/manu.dart';
-import 'package:tess/widget/signin_addmin.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -48,6 +46,13 @@ class _AdddataState extends State<Adddata> {
           child: RaisedButton.icon(
             color: Colors.green[800],
             onPressed: () {
+              Fluttertoast.showToast(
+                msg: "เพิ่มข้อมูลสำเร็จ",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.purple[100],
+                textColor: Colors.black,
+              );
               print('you click');
 
               if (file == null) {

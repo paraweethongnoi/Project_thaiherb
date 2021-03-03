@@ -5,11 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tess/screens/bmi1.dart';
-import 'package:tess/screens/components/manu.dart';
-import 'package:tess/widget/signin_addmin.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Adddata extends StatefulWidget {
   @override
@@ -48,12 +46,19 @@ class _AdddataState extends State<Adddata> {
           child: RaisedButton.icon(
             color: Colors.green[800],
             onPressed: () {
+              Fluttertoast.showToast(
+                msg: "เพิ่มข้อมูลสำเร็จ",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.purple[100],
+                textColor: Colors.black,
+              );
               print('you click');
 
               if (file == null) {
                 showAlert('คุณยังไม่ได้เลือกรูป',
                     'กรุณาเลือกรูปภาพ หรือ Upload รูปภาพ');
-              } else if(image == null){
+              } else if (image == null) {
                 showAlert('คุณยังไม่ได้เลือกรูปที่2',
                     'กรุณากดที่ รูปที่2 เลือกรูปภาพ หรือ Upload รูปภาพ');
               } else if (name == null ||
@@ -101,7 +106,7 @@ class _AdddataState extends State<Adddata> {
     await firebaseStorage.ref().child('Product/product2$i.jpg').putFile(image);
     urlPcture2 = await firebaseStorage
         .ref()
-        .child('Product/product$i.jpg')
+        .child('Product/product2$i.jpg')
         .getDownloadURL();
     await setupDisplayName();
   }
@@ -333,78 +338,6 @@ class _AdddataState extends State<Adddata> {
     );
   }
 
-  // Widget statusForm() {
-  //   return Container(
-  //     width: MediaQuery.of(context).size.width * 0.9,
-  //     child: TextField(
-  //       onChanged: (String string) {
-  //         status1 = string.trim();
-  //       },
-  //       decoration: InputDecoration(
-  //         labelText: 'ข้อควรระวัง : ',
-  //         icon: Icon(
-  //           Icons.add_alert,
-  //           color: Colors.red[700],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget status2Form() {
-  //   return Container(
-  //     width: MediaQuery.of(context).size.width * 0.9,
-  //     child: TextField(
-  //       onChanged: (String string) {
-  //         status22 = string.trim();
-  //       },
-  //       decoration: InputDecoration(
-  //         labelText: 'ข้อควรระวัง : ',
-  //         icon: Icon(
-  //           Icons.add_alert,
-  //           color: Colors.red[700],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget styleForm() {
-  //   return Container(
-  //     width: MediaQuery.of(context).size.width * 0.9,
-  //     child: TextField(
-  //       onChanged: (String string) {
-  //         style1 = string.trim();
-  //       },
-  //       decoration: InputDecoration(
-  //         labelText: 'ข้อควรระวัง : ',
-  //         icon: Icon(
-  //           Icons.add_alert,
-  //           color: Colors.red[700],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget smokingForm() {
-  //   return Container(
-  //     width: MediaQuery.of(context).size.width * 0.9,
-  //     child: TextField(
-  //       onChanged: (String string) {
-  //         smoking1 = string.trim();
-  //       },
-  //       decoration: InputDecoration(
-  //         labelText: 'ข้อควรระวัง : ',
-  //         icon: Icon(
-  //           Icons.add_alert,
-  //           color: Colors.red[700],
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget synonymsForm() {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
@@ -445,9 +378,9 @@ class _AdddataState extends State<Adddata> {
       );
 
       setState(() {
-        if(boxbtnsta == 0){
+        if (boxbtnsta == 0) {
           file = File(object.path);
-        }else{
+        } else {
           image = File(object.path);
         }
       });
@@ -481,10 +414,11 @@ class _AdddataState extends State<Adddata> {
       height: MediaQuery.of(context).size.height * 0.3,
       child: file == null
           ? Image.asset('assets/images/imageadd.png')
-          : boxbtnsta == 0 ? Image.file(file) : 
-          image == null 
-          ? Image.asset('assets/images/imageadd.png')
-          : Image.file(image),
+          : boxbtnsta == 0
+              ? Image.file(file)
+              : image == null
+                  ? Image.asset('assets/images/imageadd.png')
+                  : Image.file(image),
     );
   }
 
@@ -495,58 +429,46 @@ class _AdddataState extends State<Adddata> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // RaisedButton(
-            //   color: Colors.white,
-            //   onPressed: () {
-            //     MaterialPageRoute materialPageRoute = MaterialPageRoute(
-            //         builder: (BuildContext context) => Admin());
-            //     Navigator.of(context).push(materialPageRoute);
-            //   },
-            //   shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(40)),
-            //   elevation: 16,
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     children: <Widget>[
-            //       SvgPicture.asset(
-            //         'assets/images/admin.svg',
-            //         height: 40,
-            //       ),
-            //       Text(
-            //         'สำหรับผู้ดูแลระบบ',
-            //         style: TextStyle(
-            //           fontSize: 12.0,
-            //           color: Colors.blue[800],
-            //           fontFamily: 'Kanit',
-            //           // fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Center(
               child: Container(
-                color: Colors.grey.shade300,
+                color: Colors.orange.shade300,
                 child: ToggleButtons(
                   fillColor: Colors.white,
                   selectedColor: Colors.black,
                   children: <Widget>[
-                    Text("รูปที่1"),
-                    Text("รูปที่2"),
+                    Text(
+                      "รูปที่1",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "รูปที่2",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                   onPressed: (int index) {
                     setState(() {
-                      if(index != boxbtnsta){
+                      if (index != boxbtnsta) {
                         boxbtnsta = index;
-                      for (int buttonIndex = 0;
-                          buttonIndex < isSelected.length;
-                          buttonIndex++) {
-                        if (buttonIndex == index) {
-                          isSelected[buttonIndex] = !isSelected[buttonIndex];
-                        } else {
-                          isSelected[buttonIndex] = false;
+                        for (int buttonIndex = 0;
+                            buttonIndex < isSelected.length;
+                            buttonIndex++) {
+                          if (buttonIndex == index) {
+                            isSelected[buttonIndex] = !isSelected[buttonIndex];
+                          } else {
+                            isSelected[buttonIndex] = false;
+                          }
                         }
-                      }}
+                      }
                     });
                   },
                   isSelected: isSelected,

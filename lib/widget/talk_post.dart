@@ -26,7 +26,16 @@ class _TalkPostState extends State<TalkPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("สร้างบทสนทนา"),
+         backgroundColor: Colors.indigo[400],
+        title: Text(
+          "สร้างบทสนทนา",
+          style: TextStyle(
+            fontSize: 20.0,
+            color: Colors.white,
+            fontFamily: 'Kanit',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.close),
           onPressed: () => Navigator.pop(context),
@@ -46,7 +55,16 @@ class _TalkPostState extends State<TalkPost> {
       floatingActionButton: SizedBox(
           width: double.infinity,
           child: RaisedButton(
-            child: Text("โพสต์"),
+             color: Colors.blue,
+            child: Text(
+              "โพสต์",
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.white,
+                fontFamily: 'Kanit',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onPressed: () =>
                 portController.uploadData(textbox: textbox, status: "Post"),
           )),

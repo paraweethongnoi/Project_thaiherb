@@ -14,6 +14,7 @@ class _InforScreenState extends State<InforScreen> {
   double _weightofUser = 40.0;
 
   double _bmi = 0;
+  String sumed;
   BMIModel _bmiModel;
 
   @override
@@ -144,29 +145,31 @@ class _InforScreenState extends State<InforScreen> {
                           onPressed: () {
                             setState(() {
                               _bmi = _weightofUser /
-                                  ((_heightofUser / 100) * (_heightofUser / 100));
-
-                              if (_bmi >= 18.5 && _bmi <= 25) {
+                                  ((_heightofUser / 100) *
+                                      (_heightofUser / 100));
+                              sumed = _bmi.toStringAsFixed(2);
+                              double sumDou = double.parse('$sumed');
+                              if (sumDou >= 18.5 && _bmi <= 25) {
+                              
                                 _bmiModel = BMIModel(
-                                    bmi: _bmi,
-                                    isNormal: true,
-                                    comments: "น้ำหนักคุณ อยู่ในเกณฑ์ปกติ",
-                                    
-                                    );
-                                    
-                              } else if (_bmi < 18.5) {
+                                  bmi: sumDou,
+                                  isNormal: true,
+                                  comments: "น้ำหนักคุณ อยู่ในเกณฑ์ปกติ",
+                                );
+                              } else if (sumDou < 18.5) {
+                              
                                 _bmiModel = BMIModel(
-                                    bmi: _bmi,
+                                    bmi: sumDou,
                                     isNormal: false,
                                     comments: "อยู่ในเกณฑ์น้ำหนักน้อยหรือผอม");
-                              } else if (_bmi > 25 && _bmi <= 30) {
+                              } else if (sumDou > 25 && _bmi <= 30) {
                                 _bmiModel = BMIModel(
-                                    bmi: _bmi,
+                                    bmi: sumDou,
                                     isNormal: false,
                                     comments: "น้ำหนักคุณ เกินเกณฑ์มาตรฐาน");
                               } else {
                                 _bmiModel = BMIModel(
-                                    bmi: _bmi,
+                                    bmi: sumDou,
                                     isNormal: false,
                                     comments: "คุณเป็นโรคอ้วน");
                               }

@@ -9,7 +9,6 @@ import 'package:tess/widget/show_list_smoking.dart';
 import 'package:tess/widget/show_map.dart';
 import 'package:tess/widget/talk.dart';
 
-
 class Manu extends StatefulWidget {
   @override
   _ManuState createState() => _ManuState();
@@ -45,27 +44,20 @@ class _ManuState extends State<Manu> {
                 child: Column(
                   children: <Widget>[
                     Container(
+                     //color: Colors.black,
                       height: 120,
-                      margin: EdgeInsets.only(bottom: 50),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      width: MediaQuery.of(context).size.width,
+                     margin: EdgeInsets.only(bottom: 30),
+                      child: Column(
+                        
                         children: <Widget>[
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Thai Herbs',
-                                  style: TextStyle(
-                                      fontSize: 70.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FontStyle.italic,
-                                      fontFamily: 'Courgette'))
-                            ],
-                          )
+                          Text('Thai Herbs',
+                              style: TextStyle(
+                                  fontSize: 70.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.italic,
+                                  fontFamily: 'Courgette'))
                         ],
                       ),
                     ),

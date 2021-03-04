@@ -83,15 +83,15 @@ class _InforScreenState extends State<InforScreen> {
                       Container(
                         padding: EdgeInsets.only(left: 16, right: 16),
                         child: Slider(
-                          min: 80.0,
-                          max: 250.0,
+                          value: _heightofUser,
+                          min: 0,
+                          max: 250,
                           onChanged: (height) {
                             setState(() {
                               _heightofUser = height;
                             });
                           },
-                          value: _heightofUser,
-                          divisions: 100,
+                          divisions: 250,
                           activeColor: Colors.pink[700],
                           label: '$_heightofUser',
                         ),
@@ -117,17 +117,28 @@ class _InforScreenState extends State<InforScreen> {
                       Container(
                         padding: EdgeInsets.only(left: 16, right: 16),
                         child: Slider(
-                          min: 30.0,
-                          max: 120.0,
+                           value: _weightofUser,
+                          min: 0,
+                          max: 250,
                           onChanged: (weight) {
                             setState(() {
-                              _weightofUser = weight;
+                               _weightofUser = weight;
                             });
                           },
-                          value: _weightofUser,
-                          divisions: 100,
+                          divisions: 250,
                           activeColor: Colors.pink[700],
                           label: '$_weightofUser',
+                          // min: 30.0,
+                          // max: 120.0,
+                          // onChanged: (weight) {
+                          //   setState(() {
+                          //     _weightofUser = weight;
+                          //   });
+                          // },
+                          // value: _weightofUser,
+                          // divisions: 100,
+                          // activeColor: Colors.pink[700],
+                          // label: '$_weightofUser',
                         ),
                       ),
                       Text(
@@ -150,14 +161,12 @@ class _InforScreenState extends State<InforScreen> {
                               sumed = _bmi.toStringAsFixed(2);
                               double sumDou = double.parse('$sumed');
                               if (sumDou >= 18.5 && _bmi <= 25) {
-                              
                                 _bmiModel = BMIModel(
                                   bmi: sumDou,
                                   isNormal: true,
                                   comments: "น้ำหนักคุณ อยู่ในเกณฑ์ปกติ",
                                 );
                               } else if (sumDou < 18.5) {
-                              
                                 _bmiModel = BMIModel(
                                     bmi: sumDou,
                                     isNormal: false,

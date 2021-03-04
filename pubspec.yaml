@@ -25,6 +25,7 @@ dependencies:
   google_maps_flutter: ^1.1.1
   url_launcher: ^5.7.10
   image_picker: ^0.6.7+22
+
   
   
 
@@ -93,6 +94,7 @@ flutter:
    - assets/images/imageadd.png
    - assets/images/admin.svg
    - assets/images/covid-19.svg
+   - assets/images/pencil.svg
 
   #  - images/a_dot_ham.jpeg
 

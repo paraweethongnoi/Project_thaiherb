@@ -108,7 +108,7 @@ class DeleteEdite {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     await firebaseAuth.signOut().then((response) {
       MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Bmi1());
+          MaterialPageRoute(builder: (BuildContext context) => Bmi1(status: "Logout",index: 3,));
       Navigator.of(_context).pushAndRemoveUntil(
           materialPageRoute, (Route<dynamic> route) => false);
     });

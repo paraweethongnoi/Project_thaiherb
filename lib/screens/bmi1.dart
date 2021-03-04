@@ -8,6 +8,9 @@ import 'package:tess/screens/components/home_screen.dart';
 import 'home.dart';
 
 class Bmi1 extends StatefulWidget {
+  final String status;
+  final int index;
+    Bmi1({this.status,this.index});
   @override
   _Bmi1State createState() => _Bmi1State();
 }
@@ -31,6 +34,15 @@ class _Bmi1State extends State<Bmi1> {
     )),
     Center(child: Scaffold(body: Home()))
   ];
+
+  @override
+  void initState() {
+    super.initState();
+      if(widget.status != null){
+        _currentIndex = widget.index;
+        setState(() {});
+      }
+  }
 
   @override
   Widget build(BuildContext context) {

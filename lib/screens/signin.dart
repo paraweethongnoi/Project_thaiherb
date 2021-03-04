@@ -99,7 +99,7 @@ class _SigninState extends State<Signin> {
         .then((response) {
       print('Authen Success');
       MaterialPageRoute materialPageRoute =
-          MaterialPageRoute(builder: (BuildContext context) => Bmi1());
+          MaterialPageRoute(builder: (BuildContext context) => Bmi1(status: "Login",index: 3,));
       Navigator.of(context).pushAndRemoveUntil(
           materialPageRoute, (Route<dynamic> route) => false);
     }).catchError((response) {

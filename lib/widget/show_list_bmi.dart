@@ -152,16 +152,7 @@ class _ShowlistbmiState extends State<Showlistbmi> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              const Color(0xFFffffff),
-              const Color(0xFFbdf9f3),
-            ],
-          ),
-        ),
+      
         child: Stack(
           children: [
             CustomPaint(

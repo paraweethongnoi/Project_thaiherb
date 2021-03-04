@@ -49,63 +49,44 @@ class _TalkState extends State<Talk> {
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
-            child: SizedBox(
-              height: 65,
-              child: Card(
+            child: Card(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(portController
-                              .dateTimeConvert(talks[index]["datetime"])),
-                          Text(
-                            talks[index]["talkDetail"],
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.black,
-                              fontFamily: 'Kanit',
-                            ),
-                          ),
-                        ],
-                      ),
-                      IconButton(
-                        icon: Row(
+                  padding: EdgeInsets.symmetric(horizontal: 18,vertical: 15),
+                  child: 
+                            Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "${talks[index]["coments"].length}",
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.red,
-                                fontFamily: 'Kanit',
-                              ),
-                            ),
-                            Icon(
-                              Icons.comment,
-                              color: Colors.red,
-                            ),
-                          ],
-                        ),
+                            Text(portController
+                                .dateTimeConvert(talks[index]["datetime"])),
+                            Text(talks[index]["talkDetail"]),
+                            Divider(),
+                            Row(
+                              children: [
+                                IconButton(
+                        icon: 
+                                Icon(
+                                  Icons.comment,
+                                  color: Colors.red,
+                                ),
                         onPressed: () {
                           MaterialPageRoute route = MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  TalkPostDocId("${talks[index]["docid"]}"));
+                                  builder: (BuildContext context) =>
+                                      TalkPostDocId("${talks[index]["docid"]}"));
                           Navigator.push(context, route).then((value) {
-                            setState(() {
-                              dataread();
-                            });
+                                setState(() {
+                                  dataread();
+                                });
                           });
                         },
-                      )
-                    ],
                   ),
+                  Text("${talks[index]["coments"].length}"),
+                              ],
+                            ),
+                          ],
+                      ),
                 ),
               ),
-            ),
           );
         });
   }

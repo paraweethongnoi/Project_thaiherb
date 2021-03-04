@@ -77,7 +77,7 @@ class _SettingScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       _RadiaProgress(
-                        width: width * 0.4,
+                        width: MediaQuery.of(context).size.width-250,
                         height: height * 0.3,
                         progress: 0.65,
                       ),
@@ -91,7 +91,7 @@ class _SettingScreenState extends State<HomeScreen> {
                             progress: 0.88,
                             progressColor: Colors.pink[900],
                             leftAmount: 88,
-                            width: width * 0.35,
+                            width: MediaQuery.of(context).size.width-280,
                           ),
                           SizedBox(
                             height: 4,
@@ -101,7 +101,7 @@ class _SettingScreenState extends State<HomeScreen> {
                             progress: 0.68,
                             progressColor: Colors.blue,
                             leftAmount: 68,
-                            width: width * 0.35,
+                           width: MediaQuery.of(context).size.width-280,
                           ),
                           SizedBox(
                             height: 4,
@@ -111,7 +111,7 @@ class _SettingScreenState extends State<HomeScreen> {
                             progress: 0.38,
                             progressColor: Colors.yellow[900],
                             leftAmount: 38,
-                            width: width * 0.35,
+                          width: MediaQuery.of(context).size.width-280,
                           ),
                           SizedBox(
                             height: 4,
@@ -121,7 +121,7 @@ class _SettingScreenState extends State<HomeScreen> {
                             progress: 0.33,
                             progressColor: Colors.green,
                             leftAmount: 33,
-                            width: width * 0.35,
+                           width: MediaQuery.of(context).size.width-280,
                           ),
                           SizedBox(
                             height: 4,
@@ -131,7 +131,7 @@ class _SettingScreenState extends State<HomeScreen> {
                             progress: 0.18,
                             progressColor: Colors.red,
                             leftAmount: 18,
-                            width: width * 0.35,
+                            width: MediaQuery.of(context).size.width-280,
                           ),
                         ],
                       )

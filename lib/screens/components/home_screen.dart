@@ -142,149 +142,151 @@ class _SettingScreenState extends State<HomeScreen> {
             ),
             painter: HeaderCurvedContainer(),
           ),
-          Positioned(
-            top: height * 0.38,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: height * 0.60,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 8,
-                      left: 32,
-                      right: 16,
-                    ),
-                    child: Text(
-                      'สาระน่ารู้',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.black,
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
+          SingleChildScrollView(
+            child: Positioned(
+              top: height * 0.38,
+              left: 0,
+              right: 0,
+              child: Container(
+                height: height * 0.60,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 8,
+                        left: 32,
+                        right: 16,
+                      ),
+                      child: Text(
+                        'สาระน่ารู้',
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          color: Colors.black,
+                          fontFamily: 'Kanit',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 32,
-                          ),
-                          for (int i = 0; i < meals.length; i++)
-                            _MealCard(
-                              meal: meals[i],
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: <Widget>[
+                            SizedBox(
+                              width: 32,
                             ),
-                        ],
+                            for (int i = 0; i < meals.length; i++)
+                              _MealCard(
+                                meal: meals[i],
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    child: OpenContainer(
-                      closedElevation: 0,
-                      transitionType: ContainerTransitionType.fade,
-                      transitionDuration: const Duration(milliseconds: 1000),
-                      openBuilder: (context, _) {
-                        return MOO5();
-                      },
-                      closedBuilder: (context, VoidCallback openContainer) {
-                        return GestureDetector(
-                          child: GestureDetector(
-                            onTap: openContainer,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    const Color(0xFF00000),
-                                    const Color(0xFFFFB590),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      child: OpenContainer(
+                        closedElevation: 0,
+                        transitionType: ContainerTransitionType.fade,
+                        transitionDuration: const Duration(milliseconds: 1000),
+                        openBuilder: (context, _) {
+                          return MOO5();
+                        },
+                        closedBuilder: (context, VoidCallback openContainer) {
+                          return GestureDetector(
+                            child: GestureDetector(
+                              onTap: openContainer,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      const Color(0xFF00000),
+                                      const Color(0xFFFFB590),
+                                    ],
+                                  ),
+                                ),
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      "สุขภาพดี๊ดี ต้องมีครบ 5 หมู่",
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: Colors.black,
+                                        fontFamily: 'Kanit',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Container(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SvgPicture.asset(
+                                            'assets/images/protein.svg',
+                                            height: 50,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SvgPicture.asset(
+                                            'assets/images/rye.svg',
+                                            height: 50,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SvgPicture.asset(
+                                            'assets/images/salad.svg',
+                                            height: 50,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SvgPicture.asset(
+                                            'assets/images/strawberries.svg',
+                                            height: 50,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(10),
+                                          child: SvgPicture.asset(
+                                            'assets/images/trans-fat.svg',
+                                            height: 50,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    "สุขภาพดี๊ดี ต้องมีครบ 5 หมู่",
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.black,
-                                      fontFamily: 'Kanit',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: SvgPicture.asset(
-                                          'assets/images/protein.svg',
-                                          height: 50,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: SvgPicture.asset(
-                                          'assets/images/rye.svg',
-                                          height: 50,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: SvgPicture.asset(
-                                          'assets/images/salad.svg',
-                                          height: 50,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: SvgPicture.asset(
-                                          'assets/images/strawberries.svg',
-                                          height: 50,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: SvgPicture.asset(
-                                          'assets/images/trans-fat.svg',
-                                          height: 50,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

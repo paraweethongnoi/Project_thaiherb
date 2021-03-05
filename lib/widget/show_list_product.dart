@@ -167,41 +167,44 @@ class _ShowListProductState extends State<ShowListProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.limeAccent[700],
-        bottom: PreferredSize(
-          preferredSize: Size(double.infinity, 20),
-          child: TextFormField(
-            controller: keyword,
-            onChanged: (value){
-                setState(() {
-                  productSearch = products.where((element) => (element["Name"].contains(keyword.text))).toList();
-                });
-            },
-            decoration: InputDecoration(labelText: 'กดเพื่อค้นหา',
-              suffixIcon: Icon(Icons.search)
+    return RefreshIndicator(
+      onRefresh: readAllData,
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: Colors.limeAccent[700],
+          bottom: PreferredSize(
+            preferredSize: Size(double.infinity, 20),
+            child: TextFormField(
+              controller: keyword,
+              onChanged: (value){
+                  setState(() {
+                    productSearch = products.where((element) => (element["Name"].contains(keyword.text))).toList();
+                  });
+              },
+              decoration: InputDecoration(labelText: 'กดเพื่อค้นหา',
+                suffixIcon: Icon(Icons.search)
+              ),
             ),
           ),
         ),
-      ),
-      body: keyword.text != "" ? showSearchView() : Stack(
-        children: [
-          CustomPaint(
-            child: Container(
-              child: ListView.builder(
-                itemCount: products.length,
-                itemBuilder: (BuildContext buildcontext, int index) {
-                  return showListView(index);
-                },
+        body: keyword.text != "" ? showSearchView() : Stack(
+          children: [
+            CustomPaint(
+              child: Container(
+                child: ListView.builder(
+                  itemCount: products.length,
+                  itemBuilder: (BuildContext buildcontext, int index) {
+                    return showListView(index);
+                  },
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
               ),
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              painter: HeaderCurvedContainer(),
             ),
-            painter: HeaderCurvedContainer(),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

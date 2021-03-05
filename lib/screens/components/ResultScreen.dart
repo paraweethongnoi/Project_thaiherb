@@ -20,88 +20,90 @@ class ResultScreen extends StatelessWidget {
             ),
             painter: HeaderCurvedContainer(),
           ),
-          Container(
+          SingleChildScrollView(
             child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              padding: EdgeInsets.all(30.0),
-              margin: EdgeInsets.only(bottom: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    height: 200,
-                    width: 200,
-                    child: bmiModel.isNormal
-                        ? SvgPicture.asset(
-                            'assets/images/happyheart.svg',
-                            fit: BoxFit.contain,
-                          )
-                        : SvgPicture.asset(
-                            'assets/images/sadheart.svg',
-                            fit: BoxFit.contain,
-                          ),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    'ค่า BMI ของคุณ คือ ${bmiModel.bmi}',
-                    style: TextStyle(
-                        color: Colors.red[700],
-                        fontFamily: 'Kanit',
-                        fontSize: 34,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '${bmiModel.comments}',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontFamily: 'Kanit',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  bmiModel.isNormal
-                      ? Text(
-                          'ค่า BMI ของคุณ ปกติ!',
-                          style: TextStyle(
-                              color: Colors.red[700],
-                              fontFamily: 'Kanit',
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        )
-                      : Text(
-                          'ค่า BMI ของคุณ ไม่ปกติ!',
-                          style: TextStyle(
-                              color: Colors.red[700],
-                              fontFamily: 'Kanit',
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
-                        ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    child: FlatButton.icon(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                      ),
-                      label: Text('คำนวณใหม่อีกครั้ง'),
-                      textColor: Colors.white,
-                      color: Colors.pink[700],
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                padding: EdgeInsets.all(30.0),
+                margin: EdgeInsets.only(bottom: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      height: 200,
+                      width: 200,
+                      child: bmiModel.isNormal
+                          ? SvgPicture.asset(
+                              'assets/images/happyheart.svg',
+                              fit: BoxFit.contain,
+                            )
+                          : SvgPicture.asset(
+                              'assets/images/sadheart.svg',
+                              fit: BoxFit.contain,
+                            ),
                     ),
-                    width: double.infinity,
-                    padding: EdgeInsets.only(left: 16, right: 16),
-                  ),
-                ],
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      'ค่า BMI ของคุณ คือ ${bmiModel.bmi}',
+                      style: TextStyle(
+                          color: Colors.red[700],
+                          fontFamily: 'Kanit',
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      '${bmiModel.comments}',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontFamily: 'Kanit',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    bmiModel.isNormal
+                        ? Text(
+                            'ค่า BMI ของคุณ ปกติ!',
+                            style: TextStyle(
+                                color: Colors.red[700],
+                                fontFamily: 'Kanit',
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          )
+                        : Text(
+                            'ค่า BMI ของคุณ ไม่ปกติ!',
+                            style: TextStyle(
+                                color: Colors.red[700],
+                                fontFamily: 'Kanit',
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      child: FlatButton.icon(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                        ),
+                        label: Text('คำนวณใหม่อีกครั้ง'),
+                        textColor: Colors.white,
+                        color: Colors.pink[700],
+                      ),
+                      width: double.infinity,
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

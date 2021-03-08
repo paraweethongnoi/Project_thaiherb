@@ -20,13 +20,14 @@ class ResultScreen extends StatelessWidget {
             ),
             painter: HeaderCurvedContainer(),
           ),
-          SingleChildScrollView(
+          Container(
             child: Container(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                padding: EdgeInsets.all(30.0),
-                margin: EdgeInsets.only(bottom: 20),
+              width: double.infinity,
+              height: double.infinity,
+              padding: EdgeInsets.all(30.0),
+              margin: EdgeInsets.only(bottom: 20),
+              //**** */
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

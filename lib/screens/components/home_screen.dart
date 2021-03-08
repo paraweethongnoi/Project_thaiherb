@@ -75,6 +75,7 @@ class _SettingScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _RadiaProgress(
                         width: MediaQuery.of(context).size.width-250,
@@ -142,76 +143,76 @@ class _SettingScreenState extends State<HomeScreen> {
             ),
             painter: HeaderCurvedContainer(),
           ),
-          SingleChildScrollView(
-            child: Positioned(
-              top: height * 0.38,
-              left: 0,
-              right: 0,
-              child: Container(
-                height: height * 0.60,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 8,
-                        left: 32,
-                        right: 16,
-                      ),
-                      child: Text(
-                        'สาระน่ารู้',
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          color: Colors.black,
-                          fontFamily: 'Kanit',
-                          fontWeight: FontWeight.bold,
-                        ),
+          Positioned(
+            top: height * 0.38,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: height * 0.60,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 8,
+                      left: 32,
+                      right: 16,
+                    ),
+                    child: Text(
+                      'สาระน่ารู้',
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: <Widget>[
-                            SizedBox(
-                              width: 32,
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            width: 32,
+                          ),
+                          for (int i = 0; i < meals.length; i++)
+                            _MealCard(
+                              meal: meals[i],
                             ),
-                            for (int i = 0; i < meals.length; i++)
-                              _MealCard(
-                                meal: meals[i],
-                              ),
-                          ],
-                        ),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Expanded(
-                      child: OpenContainer(
-                        closedElevation: 0,
-                        transitionType: ContainerTransitionType.fade,
-                        transitionDuration: const Duration(milliseconds: 1000),
-                        openBuilder: (context, _) {
-                          return MOO5();
-                        },
-                        closedBuilder: (context, VoidCallback openContainer) {
-                          return GestureDetector(
-                            child: GestureDetector(
-                              onTap: openContainer,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      const Color(0xFF00000),
-                                      const Color(0xFFFFB590),
-                                    ],
-                                  ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      openBuilder: (context, _) {
+                        return MOO5();
+                      },
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          child: GestureDetector(
+                            onTap: openContainer,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    const Color(0xFF00000),
+                                    const Color(0xFFFFB590),
+                                  ],
                                 ),
+                              ),
+                              child: SingleChildScrollView(
                                 child: Column(
                                   children: <Widget>[
                                     Text(
@@ -281,12 +282,12 @@ class _SettingScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

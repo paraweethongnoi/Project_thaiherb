@@ -62,244 +62,289 @@ class _SettingScreenState extends State<HomeScreen> {
         elevation: 0.0,
         backgroundColor: Colors.greenAccent,
       ),
-      body: Stack(
-        alignment: Alignment.topLeft,
-        children: [
-          CustomPaint(
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              padding: const EdgeInsets.only(
-                  top: 80, left: 30, right: 16, bottom: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _RadiaProgress(
-                        width: MediaQuery.of(context).size.width-250,
-                        height: height * 0.3,
-                        progress: 0.65,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
+      body: SingleChildScrollView(
+        child: Stack(
+          alignment: Alignment.topLeft,
+          children: [
+            CustomPaint(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                //height: MediaQuery.of(context).size.height,
+                padding: const EdgeInsets.only(
+                  top: 80, //
+                  //   left: 20, //right: 16, bottom: 16
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // _RadiaProgress(
+                        //   width: MediaQuery.of(context).size.width - 250,
+                        //  height: height * 0.3,
+                        //  progress: 0.65,
+                        // ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            height: 200,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(75.0),
+                              color: Colors.amber,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Covid-19",
+                                  style: TextStyle(
+                                       fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.red),
+                                ),
+                                Text(
+                                  "สัญณาณบ่งชี้",
+                                  style: TextStyle(
+                                    //  fontSize: 20.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  "เบื้องต้น",
+                                  style: TextStyle(
+                                    //   fontSize: 20.0,
+                                    color: Colors.blue[800],
+                                    fontFamily: 'Kanit',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            _IngredientProgress(
+                              ingredient: "มีไข้",
+                              progress: 0.88,
+                              progressColor: Colors.pink[900],
+                              leftAmount: 88,
+                              width: MediaQuery.of(context).size.width - 250,
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            _IngredientProgress(
+                              ingredient: "ไอแห้ง",
+                              progress: 0.68,
+                              progressColor: Colors.blue,
+                              leftAmount: 68,
+                              width: MediaQuery.of(context).size.width - 250,
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            _IngredientProgress(
+                              ingredient: "ไม่มีเรี่ยวแรง",
+                              progress: 0.38,
+                              progressColor: Colors.yellow[900],
+                              leftAmount: 38,
+                              width: MediaQuery.of(context).size.width - 250,
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            _IngredientProgress(
+                              ingredient: "ไอแบบมีเสมหะ",
+                              progress: 0.33,
+                              progressColor: Colors.green,
+                              leftAmount: 33,
+                              width: MediaQuery.of(context).size.width - 250,
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            _IngredientProgress(
+                              ingredient: "หายใจลำบาก",
+                              progress: 0.18,
+                              progressColor: Colors.red,
+                              leftAmount: 18,
+                              width: MediaQuery.of(context).size.width - 250,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    Container(
+                      height: height * 0.50,
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          _IngredientProgress(
-                            ingredient: "มีไข้",
-                            progress: 0.88,
-                            progressColor: Colors.pink[900],
-                            leftAmount: 88,
-                            width: MediaQuery.of(context).size.width-280,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          _IngredientProgress(
-                            ingredient: "ไอแห้ง",
-                            progress: 0.68,
-                            progressColor: Colors.blue,
-                            leftAmount: 68,
-                           width: MediaQuery.of(context).size.width-280,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          _IngredientProgress(
-                            ingredient: "ไม่มีเรี่ยวแรง",
-                            progress: 0.38,
-                            progressColor: Colors.yellow[900],
-                            leftAmount: 38,
-                          width: MediaQuery.of(context).size.width-280,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          _IngredientProgress(
-                            ingredient: "ไอแบบมีเสมหะ",
-                            progress: 0.33,
-                            progressColor: Colors.green,
-                            leftAmount: 33,
-                           width: MediaQuery.of(context).size.width-280,
-                          ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          _IngredientProgress(
-                            ingredient: "หายใจลำบาก",
-                            progress: 0.18,
-                            progressColor: Colors.red,
-                            leftAmount: 18,
-                            width: MediaQuery.of(context).size.width-280,
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            painter: HeaderCurvedContainer(),
-          ),
-          Positioned(
-            top: height * 0.38,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: height * 0.60,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      bottom: 8,
-                      left: 32,
-                      right: 16,
-                    ),
-                    child: Text(
-                      'สาระน่ารู้',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.black,
-                        fontFamily: 'Kanit',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            width: 32,
-                          ),
-                          for (int i = 0; i < meals.length; i++)
-                            _MealCard(
-                              meal: meals[i],
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 8,
+                              left: 32,
+                              right: 16,
                             ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    child: OpenContainer(
-                      closedElevation: 0,
-                      transitionType: ContainerTransitionType.fade,
-                      transitionDuration: const Duration(milliseconds: 1000),
-                      openBuilder: (context, _) {
-                        return MOO5();
-                      },
-                      closedBuilder: (context, VoidCallback openContainer) {
-                        return GestureDetector(
-                          child: GestureDetector(
-                            onTap: openContainer,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    const Color(0xFF00000),
-                                    const Color(0xFFFFB590),
-                                  ],
-                                ),
+                            child: Text(
+                              'สาระน่ารู้',
+                              style: TextStyle(
+                                fontSize: 25.0,
+                                color: Colors.black,
+                                fontFamily: 'Kanit',
+                                fontWeight: FontWeight.bold,
                               ),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      "สุขภาพดี๊ดี ต้องมีครบ 5 หมู่",
-                                      style: TextStyle(
-                                        fontSize: 18.0,
-                                        color: Colors.black,
-                                        fontFamily: 'Kanit',
-                                        fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 32,
+                                  ),
+                                  for (int i = 0; i < meals.length; i++)
+                                    _MealCard(
+                                      meal: meals[i],
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          OpenContainer(
+                            closedElevation: 0,
+                            transitionType: ContainerTransitionType.fade,
+                            transitionDuration:
+                                const Duration(milliseconds: 1000),
+                            openBuilder: (context, _) {
+                              return MOO5();
+                            },
+                            closedBuilder:
+                                (context, VoidCallback openContainer) {
+                              return GestureDetector(
+                                child: GestureDetector(
+                                  onTap: openContainer,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(30)),
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          const Color(0xFF00000),
+                                          const Color(0xFFFFB590),
+                                        ],
                                       ),
                                     ),
-                                    Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            'assets/images/protein.svg',
-                                            height: 50,
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            "สุขภาพดี๊ดี ต้องมีครบ 5 หมู่",
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: Colors.black,
+                                              fontFamily: 'Kanit',
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            'assets/images/rye.svg',
-                                            height: 50,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            'assets/images/salad.svg',
-                                            height: 50,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            'assets/images/strawberries.svg',
-                                            height: 50,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(10),
-                                          child: SvgPicture.asset(
-                                            'assets/images/trans-fat.svg',
-                                            height: 50,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                          Row(
+                                            children: <Widget>[
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/protein.svg',
+                                                  height: 50,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/rye.svg',
+                                                  height: 50,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/salad.svg',
+                                                  height: 50,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/strawberries.svg',
+                                                  height: 50,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: SvgPicture.asset(
+                                                  'assets/images/trans-fat.svg',
+                                                  height: 50,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            },
                           ),
-                        );
-                      },
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+              ),
+              painter: HeaderCurvedContainer(),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Column(
+                children: [
+                  showLongin(),
                 ],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              children: [
-                showLongin(),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -386,8 +431,8 @@ class _RadiaProgress extends StatelessWidget {
         progress: 0.65,
       ),
       child: Container(
-        height: height,
-        width: width,
+        // height: height,
+        // width: width,
         child: Center(
           child: RichText(
             textAlign: TextAlign.center,
@@ -395,7 +440,7 @@ class _RadiaProgress extends StatelessWidget {
               TextSpan(
                 text: "Covid-19",
                 style: TextStyle(
-                    fontSize: 30,
+                    //  fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.red),
               ),
@@ -403,7 +448,7 @@ class _RadiaProgress extends StatelessWidget {
               TextSpan(
                 text: "สัญณาณบ่งชี้",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  //  fontSize: 20.0,
                   color: Colors.blue[800],
                   fontFamily: 'Kanit',
                   fontWeight: FontWeight.bold,
@@ -413,7 +458,7 @@ class _RadiaProgress extends StatelessWidget {
               TextSpan(
                 text: "เบื้องต้น",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  //   fontSize: 20.0,
                   color: Colors.blue[800],
                   fontFamily: 'Kanit',
                   fontWeight: FontWeight.bold,

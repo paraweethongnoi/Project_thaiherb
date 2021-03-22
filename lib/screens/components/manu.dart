@@ -26,7 +26,7 @@ class _ManuState extends State<Manu> {
       child: Scaffold(
         appBar: AppBar(
             elevation: 0.0,
-            title: Text('Search manu'),
+            title: Text('Search menu'),
             backgroundColor: Colors.lightBlue[400]),
         backgroundColor: Colors.lightBlue[50],
         body: Stack(
@@ -85,12 +85,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/spice.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'ค้นหาด้วยชื่อ',
                                   style: TextStyle(
-                                    fontSize: 18.0,
+                                   // fontSize: 18.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -120,12 +120,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/patient.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'ค้นหาตามอาการ',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                //    fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -155,12 +155,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/herb.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'ค้นหาตามลักษณะ',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                 //   fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -190,12 +190,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/cigarettes.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'สมุนไพรช่วยเลิกบุหรี่',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                  //  fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -225,12 +225,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/map.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'แหล่งซื้อขาย',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                //    fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -260,12 +260,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/add-file.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'เพิ่ม รายการสมุนไพร',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                 //   fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -295,12 +295,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/chat.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'พูดคุย แลกเปลี่ยนความรู้',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                 //   fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,
@@ -330,12 +330,12 @@ class _ManuState extends State<Manu> {
                               children: <Widget>[
                                 SvgPicture.asset(
                                   'assets/images/covid-19.svg',
-                                  height: 120,
+                                  height: 100,
                                 ),
                                 Text(
                                   'รายงานสถานการณ์ โควิด-19',
                                   style: TextStyle(
-                                    fontSize: 17.0,
+                                 //   fontSize: 17.0,
                                     color: Colors.blue[800],
                                     fontFamily: 'Kanit',
                                     fontWeight: FontWeight.bold,

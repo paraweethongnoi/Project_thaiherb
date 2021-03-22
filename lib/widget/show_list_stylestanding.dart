@@ -102,7 +102,7 @@ class _ShowliststylestandingState extends State<Showliststylestanding> {
         Text(
           products[index]["Detail"],
           style: TextStyle(
-            fontSize: 15.0,
+           // fontSize: 15.0,
             color: Colors.grey[800],
             fontFamily: 'Kanit',
           ),
@@ -126,7 +126,7 @@ class _ShowliststylestandingState extends State<Showliststylestanding> {
         Text(
           products[index]["Detail2"],
           style: TextStyle(
-            fontSize: 15.0,
+         //   fontSize: 15.0,
             color: Colors.grey[800],
             fontFamily: 'Kanit',
           ),

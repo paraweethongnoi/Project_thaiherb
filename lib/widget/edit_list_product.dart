@@ -522,13 +522,29 @@ class _EditListProductState extends State<EditListProduct> {
             // ),
             Center(
               child: Container(
-                color: Colors.grey.shade300,
+                color: Colors.pink.shade300,
                 child: ToggleButtons(
                   fillColor: Colors.white,
                   selectedColor: Colors.black,
                   children: <Widget>[
-                    Text("รูปที่1"),
-                    Text("รูปที่2"),
+                    Text(
+                      "รูปที่1",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      "รูปที่2",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.black,
+                        fontFamily: 'Kanit',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                   onPressed: (int index) {
                     setState(() {

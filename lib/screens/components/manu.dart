@@ -53,7 +53,7 @@ class _ManuState extends State<Manu> {
                         children: <Widget>[
                           Text('Thai Herbs',
                               style: TextStyle(
-                                  fontSize: 70.0,
+                                  fontSize: 60.0,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.italic,

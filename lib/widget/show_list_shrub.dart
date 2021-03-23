@@ -100,7 +100,7 @@ class _ShowlistshrubState extends State<Showlistshrub> {
           ),
         ),
         Text(
-          products[index]["Detail"],
+          products[index]["Detail"],overflow: TextOverflow.ellipsis,
           style: TextStyle(
         //    fontSize: 15.0,
             color: Colors.grey[800],
@@ -124,7 +124,7 @@ class _ShowlistshrubState extends State<Showlistshrub> {
           ),
         ),
         Text(
-          products[index]["Detail2"],
+          products[index]["Detail2"],overflow: TextOverflow.ellipsis,
           style: TextStyle(
           //  fontSize: 15.0,
             color: Colors.grey[800],

@@ -103,6 +103,8 @@ class ResultScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: EdgeInsets.only(left: 16, right: 16),
                     ),
+                    if(bmiModel.bmi>30 )
+                    RaisedButton(child: Text('2222222'),onPressed: (){},)
                   ],
                 ),
               ),

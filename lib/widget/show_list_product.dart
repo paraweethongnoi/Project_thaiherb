@@ -69,52 +69,48 @@ class _ShowListProductState extends State<ShowListProduct> {
   }
 
   Widget showDetail(int index) {
-    return Row(
-      children: [
+    return
+        // Text(
+        //   ':',
+        //   style: TextStyle(
+        //     fontSize: 16.0,
+        //     color: Colors.grey[700],
+        //     fontFamily: 'Kanit',
+        //     fontWeight: FontWeight.w300,
+        //   ),
+        // ),
         Text(
-          ':',
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Colors.grey[700],
-            fontFamily: 'Kanit',
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        Text(
-          products[index]["Detail"],overflow: TextOverflow.ellipsis,
+          ':'+products[index]["Detail"],overflow: TextOverflow.ellipsis,
           style: TextStyle(
             
           //  fontSize: 15.0,
             color: Colors.grey[800],
             fontFamily: 'Kanit',
           ),
-        ),
-      ],
-    );
+        );
+  
   }
 
   Widget showDetail2(int index) {
-    return Row(
-      children: [
+    return 
+    
+        // Text(
+        //   ':',
+        //   style: TextStyle(
+        //     fontSize: 16.0,
+        //     color: Colors.grey[700],
+        //     fontFamily: 'Kanit',
+        //     fontWeight: FontWeight.w300,
+        //   ),
+        // )
         Text(
-          ':',
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Colors.grey[700],
-            fontFamily: 'Kanit',
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        Text(
-          products[index]["Detail2"],overflow: TextOverflow.ellipsis,
+          ':'+products[index]["Detail2"],overflow: TextOverflow.ellipsis,
           style: TextStyle(
           //  fontSize: 15.0,
             color: Colors.grey[800],
             fontFamily: 'Kanit',
           ),
-        ),
-      ],
-    );
+        );
   }
 
   Widget showText(int index) {
@@ -122,6 +118,7 @@ class _ShowListProductState extends State<ShowListProduct> {
       width: MediaQuery.of(context).size.width * 0.6,
       height: 90.0,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           showName(index),
           showDetail(index),

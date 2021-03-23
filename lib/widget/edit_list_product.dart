@@ -126,7 +126,7 @@ class _EditListProductState extends State<EditListProduct> {
         .ref()
         .child('Product/product2$i.jpg')
         .getDownloadURL();
-    print('urlPcture =$urlPcture2');
+    print('urlPcture2 =$urlPcture2');
     }
     await setupDisplayName();
   }

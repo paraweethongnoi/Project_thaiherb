@@ -105,9 +105,10 @@ class _ShowlistsmokingState extends State<Showlistsmoking> {
           ),
         ),
         Text(
-          products[index]["Detail"],
+          products[index]["Detail"],overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 15.0,
+            
+           // fontSize: 15.0,
             color: Colors.grey[800],
             fontFamily: 'Kanit',
           ),

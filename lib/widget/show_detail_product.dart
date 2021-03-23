@@ -95,25 +95,13 @@ class _ShowdetailProductState extends State<ShowdetailProduct> {
                             ),
                           ),
                           SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Text(
-                                "ชื่อท้องถิ่น : ",
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.green[800],
-                                  fontFamily: 'Kanit',
-                                ),
-                              ),
-                              Text(
-                                widget.product["Detail2"],
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  color: Colors.green[800],
-                                  fontFamily: 'Kanit',
-                                ),
-                              ),
-                            ],
+                          Text(
+                            'ชื่อท้องถิ่น : '+widget.product["Detail2"],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              color: Colors.green[800],
+                              fontFamily: 'Kanit',
+                            ),
                           ),
                           //ชื่อวงศ์
                           Text(

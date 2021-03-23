@@ -306,10 +306,7 @@ class _ManuState extends State<Manu> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
-                                  'talk',
-                                  style: cardTextStyle,
-                                )
+                             
                               ],
                             ),
                           ),
@@ -333,7 +330,7 @@ class _ManuState extends State<Manu> {
                                   height: 100,
                                 ),
                                 Text(
-                                  'รายงานสถานการณ์ โควิด-19',
+                                  'รายงาน โควิด-19',
                                   style: TextStyle(
                                  //   fontSize: 17.0,
                                     color: Colors.blue[800],
@@ -341,10 +338,7 @@ class _ManuState extends State<Manu> {
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                Text(
-                                  'covid-19',
-                                  style: cardTextStyle,
-                                )
+                             
                               ],
                             ),
                           ),

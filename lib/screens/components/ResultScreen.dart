@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tess/widget/show_list_bmi.dart';
 
 class ResultScreen extends StatelessWidget {
   final bmiModel;
@@ -103,8 +104,38 @@ class ResultScreen extends StatelessWidget {
                       width: double.infinity,
                       padding: EdgeInsets.only(left: 16, right: 16),
                     ),
-                    if(bmiModel.bmi>30 )
-                    RaisedButton(child: Text('2222222'),onPressed: (){},)
+                    if (bmiModel.bmi > 25)
+                      RaisedButton(
+                        color: Colors.yellow[900],
+                        child: Text('สมุนไพรช่วยลดน้ำหนัก',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontFamily: 'Kanit',
+                            )),
+                        onPressed: () {MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Showlistbmi("ลดน้ำหนัก"));
+                              Navigator.of(context).push(materialPageRoute);},
+                      )
+                    else if (bmiModel.bmi < 18.5)
+                      RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40)),
+                        color: Colors.blue[900],
+                        child: Text('สมุนไพรช่วยในการเจริญอาหาร',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontFamily: 'Kanit',
+                            )),
+                        onPressed: () {MaterialPageRoute materialPageRoute =
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Showlistbmi("เจริญอาหาร"));
+                              Navigator.of(context).push(materialPageRoute);},
+                      )
                   ],
                 ),
               ),

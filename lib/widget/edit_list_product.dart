@@ -121,7 +121,7 @@ class _EditListProductState extends State<EditListProduct> {
     if (image == null) {
       urlPcture2 = widget.product['PathImage2'];
     } else{ 
-    await firebaseStorage.ref().child('Product/product$i.jpg').putFile(image);
+    await firebaseStorage.ref().child('Product/product2$i.jpg').putFile(image);
     urlPcture2 = await firebaseStorage
         .ref()
         .child('Product/product2$i.jpg')

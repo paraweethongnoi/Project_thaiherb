@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +17,29 @@ class HomeScreen extends StatefulWidget {
 class _SettingScreenState extends State<HomeScreen> {
   String login = '...';
   final today = DateTime.now();
+  List home = [];
 
+//  @override
+//   void initState() {
+//     super.initState();
+//     readAllData();
+//   }
+
+//   Future<void> readAllData() async {
+//     // ignore: deprecated_member_use
+//     FirebaseFirestore firestore = FirebaseFirestore.instance;
+//     final collectionReference = await firestore
+//         .collection("Home")
+//         .get()
+//         .then((QuerySnapshot querySnapshot) => {
+//               querySnapshot.docs.forEach((doc) {
+//                 setState(() {
+//                   home.add(doc.data());
+//                 });
+//                 print(home.toList());
+//               })
+//             });
+//   }
   // @override
   // void initState() {
   //   super.initState();

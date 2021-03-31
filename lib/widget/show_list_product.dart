@@ -53,18 +53,14 @@ class _ShowListProductState extends State<ShowListProduct> {
   }
 
   Widget showName(int index) {
-    return Row(
-      children: [
-        Text(
-          products[index]["Name"],
-          style: TextStyle(
-            fontSize: 18.0,
-            color: Colors.black,
-            fontFamily: 'Kanit',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
+    return Text(
+      products[index]["Name"],overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontSize: 18.0,
+        color: Colors.black,
+        fontFamily: 'Kanit',
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 

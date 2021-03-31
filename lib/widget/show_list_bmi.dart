@@ -92,27 +92,13 @@ class _ShowlistbmiState extends State<Showlistbmi> {
   }
 
   Widget showDetail(int index) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          ':',
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Colors.grey[700],
-            fontFamily: 'Kanit',
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        Text(
-          products[index]["Detail"],
-          style: TextStyle(
-            fontSize: 15.0,
-            color: Colors.grey[800],
-            fontFamily: 'Kanit',
-          ),
-        ),
-      ],
+    return Text(
+      ':'+products[index]["Detail"],overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+       // fontSize: 15.0,
+        color: Colors.grey[800],
+        fontFamily: 'Kanit',
+      ),
     );
   }
 
@@ -138,11 +124,12 @@ class _ShowlistbmiState extends State<Showlistbmi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: Colors.brown[50],
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.teal[300],
+        backgroundColor: Colors.brown[200],
         title: Text(
-          'สมุนไพรช่วยลดน้ำหนัก',
+          'รายการสมุนไพร',
           style: TextStyle(
             fontSize: 20.0,
             color: Colors.white,
@@ -181,7 +168,7 @@ class _ShowlistbmiState extends State<Showlistbmi> {
 class HeaderCurvedContainer extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()..color = Colors.teal[300];
+    Paint paint = Paint()..color = Colors.brown[200];
     Path path = Path()
       ..relativeLineTo(0, 150)
       ..quadraticBezierTo(size.width / 2, 225, size.width, 150)
